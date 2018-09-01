@@ -7,4 +7,4 @@ All of our members have created accounts for GitHub and joined our organization 
 We have also started to work on the project itself. Alex purchased the www.fa480.club domain from namecheap and I have been working with him to setup Route 53. Tyler did setup the VPC with proper subnets and route tables and Bryan has been working on the webserver on EC2 that uses Ubuntu.
 
 ### What is next?
-We have plans to complete the setup of Route 53 so that the blog domain work, setup and deploy blog, and to generate TLS certificates over the weekend/early next week so that we have extra time to work on the group presentation.
+We have plans to complete the setup of Route 53 so that the blog domain work, to setup and deploy blog, and to generate TLS certificates over the weekend/early next week so that we have extra time to work on the group presentation.
