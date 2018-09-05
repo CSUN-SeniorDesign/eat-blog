@@ -1,11 +1,11 @@
-##Brian's Blog Week 1
+## Brian's Blog Week 1
 
-######Organization
+###### Organization
 
 In terms of organization, in aws I am using an education account that I used in a previous class.
 I was able to renew the credits back to a full 100 dollars so it should not be an issue in terms of funding on my end, my team took in the liberty to set up the vpc and configure the subnets to some extent.
 Since I was transferred from a previous group I did not have any input in the early stages but was able to start putting input from where the team had left off which was installing an instance.
-######EC2 Instance
+###### EC2 Instance
 
 Furthermore, my team members were able to create  an ubuntu 16 instance that we will use as our web server.
 Logging in to the instance was a bit tricky since we had to use the key and the given pem key could not be used in putty so we had to convert it to ppk format to ssh into the instance since at the time we were using windows OS to connect.
