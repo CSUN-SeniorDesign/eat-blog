@@ -32,4 +32,4 @@ and or settings on namecheap our domain provider for our subdomain.
 We still have to finalize the SSL/TLS certificates. We still have to deploy
 our blog and wrap up the remaining deliverables and consolidate our work
 into a presentation. I hope to have this done by Tuesday but Wednesday is
-more likely.
+more likely. 
