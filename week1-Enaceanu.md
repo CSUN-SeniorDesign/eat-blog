@@ -1,5 +1,5 @@
-#Week 1 blog
-## Initial Phases
+## Alex's blog. Week 1.
+#### Initial Phases
 Our course started with an introduction to what we will be working
 on this semester and how to achieve those goals. There is a big focus on
 collaboration, not just within our group but also with Comp Sci students.
@@ -13,7 +13,7 @@ a domain. We split the sections of the project up to divide and conquer but we
 ended up working together to overcome obstacles and seek clarification from the
 professor on a few snag points.
 
-###Amazon Web Services Virtual Private Cloud
+#### Amazon Web Services Virtual Private Cloud
 I didn't setup my accounts for AWS properly at first but after submitting a
 ticket, credit has been applied to my account and Amazon says all is good,
 we shall see. More importantly, AWS is a very impressive and robust cloud
