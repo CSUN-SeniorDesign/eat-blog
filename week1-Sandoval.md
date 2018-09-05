@@ -16,4 +16,4 @@ Additionally I have installed Hugo onto the instance and will end up installing 
 Throughout the weekend I will take the initiative to configure Hugo and start working on setting up a new site and choosing a theme on my local machine.
 ###### Future Plans
 
-Come Tuesday I will touch base with Eric, Alex, and Tyler to see where we go and I will help to install the TLS certificate after the domain and route53 has been taken cared of. We want to finish as soon as Wednesday the latest so that we can be able to make sure that everything is running how we want it to.
+Come Tuesday I will touch base with Eric, Alex, and Tyler to see where we go and I will help to install the TLS certificate after the domain and route53 has been taken cared of. We want to finish as soon as Wednesday the latest so that we can be able to make sure that everything is running how we want it to..
