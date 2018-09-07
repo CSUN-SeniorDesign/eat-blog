@@ -3,7 +3,7 @@
 ##### What have we done?
 We got our VPC, Domain, and EC2 webserver up and running last week so we have
 been focusing on Hugo and the Documentation portion of project 0 this week.
-We started by installing Hugo locally and downloaded templates from their
+We started by installing Hugo locally and downloaded themes from their
 website which was surprisingly easy. After that we just added our blog-posts.md
 files into the hugo project, zipped it, unpacked it onto the webserver and poff,
 website live. It was the first time for me working with static website
