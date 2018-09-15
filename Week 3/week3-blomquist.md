@@ -44,7 +44,7 @@ We started Project 1 this week which involves working with Terraform & Ansible. 
 
           Enter a value: yes
   4. You should now be able to sign in to your aws console and find a VPC there.
-   ![](img/erikVPC.png?raw=true)
+   ![](/img/erikVPC.png?raw=true)
 
 ##### 2. How to create subnets with Terraform
    1. Here is how you create 3 public and 3 private subnets in different availability zones.
