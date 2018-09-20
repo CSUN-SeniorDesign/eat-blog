@@ -7,3 +7,4 @@ Blog posts will be uploaded here on a weekly basis. There is an individual folde
 * Alexander Enaceanu
 * Tyler Kluszczynski
 * Brian Sandoval
+* Shahid Karim
