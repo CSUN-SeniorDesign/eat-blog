@@ -61,7 +61,7 @@ resource "aws_route53_record" "apex" {
 }
 ```
 Next, we have to connect our AWS nameservers to our namecheap dns, doing the following:
-![alt text](img/tyler-dns.png "Test")
+![](img/tyler-dns.PNG "Image")
 
 The nameservers listed are located in the NS record of our Route 53 zone. Now we are ready to request a certificate.
 
