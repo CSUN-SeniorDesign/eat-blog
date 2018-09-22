@@ -1,6 +1,6 @@
 ## Alex’s Blog Week 3
 
-####Continuation of Project 1
+#### Continuation of Project 1
 
 There was still a lot of work to do with Terraform and Ansible, plus of course
 the many issues that arose. We got a new addition to the team and decided to
@@ -31,7 +31,7 @@ specifies that the servers to spawn in a private subnet with a different securit
 group. We also had to distribute a key pair to each instance for authentication.
 This was accomplished with the "key_name" argument.
 
-####Security groups
+#### Security groups
 
 With my new found yet minimal terraform skills I shifted to researching security
 groups. I decided to start by drawing the network diagram, something the team
