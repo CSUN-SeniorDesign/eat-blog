@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 2s on TEAM EAT</title>
+    <link>/week-2/</link>
+    <description>Recent content in Week 2s on TEAM EAT</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="/week-2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/week-2/week2-enaceanu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-2/week2-enaceanu/</guid>
+      <description>Alex&amp;rsquo;s blog. Week 2. Route 53 &amp;amp; subdomain For week 2 our team members continued working on their respective parts that they were assigned. I continued to tinker with Route 53 for the setup of our subdomain: blog.fa480.com. I was certain that the hosted zones in AWS were configured properly. We have one zone for the apex domain and one for the subdomain. I reviewed the hosted zones along with some tutorials from Amazon specifying how to set up a subdomain.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-2/week2-sandoval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-2/week2-sandoval/</guid>
+      <description>Brian&amp;rsquo;s Blog Week 2 The run down this week. Route 53 Early within the week Alex and Erik took the lead to setting up our route 53 so that we could be able to access our server on the internet through the domain that the team had purchased. Setting up route 53 took a bit more work then usual that Tyler had to work on it Monday in setting up the DNS records which took a good amount of work.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-2/week2-blomquist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-2/week2-blomquist/</guid>
+      <description>Erik&amp;rsquo;s Blog. Week #2 What have we done? We got our VPC, Domain, and EC2 webserver up and running last week so we have been focusing on Hugo and the Documentation portion of project 0 this week. We started by installing Hugo locally and downloaded themes from their website which was surprisingly easy. After that we just added our blog-posts.md files into the hugo project, zipped it, unpacked it onto the webserver and poff, website live.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-2/week2-kluszczynski/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-2/week2-kluszczynski/</guid>
+      <description>Tyler&amp;rsquo;s Blog. Week 2 What&amp;rsquo;s new this week? Getting ready for project &amp;ldquo;1&amp;rdquo;. We split our team into 2 smaller groups, one focusing on Ansible (Erik and Alex), and one focusing on Terraform (me and Brian). There are a few advantages and a few drawbacks with this plan.
+First, it will allow us to balance the workload more easily. It will also allow us to specialize more on one part of the assignment, and hopefully allow us to finish faster.</description>
+    </item>
+    
+  </channel>
+</rss>

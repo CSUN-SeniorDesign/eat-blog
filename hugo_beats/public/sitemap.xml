@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-1/week1-enaceanu/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-1/week1-sandoval/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-1/week1-blomquist/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-1/week1-kluszczynski/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-2/week2-enaceanu/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-2/week2-sandoval/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-2/week2-blomquist/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-2/week2-kluszczynski/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-3/week3-enaceanu/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-3/week3-sandoval/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-3/week3-blomquist/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-3/week3-kluszczynski/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-4/week4-enaceanu/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-4/week4-sandoval/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-4/week4-blomquist/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-4/week4-karim/</loc>
+  </url>
+  
+  <url>
+    <loc>/week-4/week4-kluszczynski/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/week-1/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/week-2/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/week-3/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/week-4/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

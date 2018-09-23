@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TEAM EAT</title>
+    <link>/</link>
+    <description>Recent content on TEAM EAT</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/readme/</guid>
+      <description> EAT-blog Repo for EAT&amp;rsquo;s blog posts.
+Blog posts will be uploaded here on a weekly basis. There is an individual folder for each week&amp;rsquo;s blogs.
+Team members:  Erik Blomquist Alexander Enaceanu Tyler Kluszczynski Brian Sandoval Shahid Karim  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-1/week1-enaceanu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-1/week1-enaceanu/</guid>
+      <description>Alex&amp;rsquo;s blog. Week 1. Initial Phases Our course started with an introduction to what we will be working on this semester and how to achieve those goals. There is a big focus on collaboration, not just within our group but also with Comp Sci students. We swiftly formed a group consisting of myself, Tyler K and Erik B. Our 4th member was MIA for a while but we ended up with a new edition, Brian.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-1/week1-sandoval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-1/week1-sandoval/</guid>
+      <description>Brian&amp;rsquo;s Blog Week 1 Organization In terms of organization, in aws I am using an education account that I used in a previous class. I was able to renew the credits back to a full 100 dollars so it should not be an issue in terms of funding on my end, my team took in the liberty to set up the vpc and configure the subnets to some extent. Since I was transferred from a previous group I did not have any input in the early stages but was able to start putting input from where the team had left off which was installing an instance.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-1/week1-blomquist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-1/week1-blomquist/</guid>
+      <description>Erik&amp;rsquo;s Blog. Week #1 We started of the week by forming the team EAT that consist of the members Alex, Bryan, Tyler, and Myself. We all came into this class with different backgrounds and experiences but we have managed to get a good start on the project and our team work.
+What have we done? We have been getting familiar with GitHub, markdown, how to handle repositories, issues, pull requests etc.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-1/week1-kluszczynski/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-1/week1-kluszczynski/</guid>
+      <description>Tyler&amp;rsquo;s Blog. Week 1 What&amp;rsquo;s new this week? AWS Issues Week 1, we formed groups, created github, slack and AWS accounts. Some of our team members have had trouble receiving their $100 credit from AWS. Alex and Erik set up their AWS accounts incorrectly so we will have to wait for their credits to come in later. Brian&amp;rsquo;s account has already used some of the credits in a previous class.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-2/week2-enaceanu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-2/week2-enaceanu/</guid>
+      <description>Alex&amp;rsquo;s blog. Week 2. Route 53 &amp;amp; subdomain For week 2 our team members continued working on their respective parts that they were assigned. I continued to tinker with Route 53 for the setup of our subdomain: blog.fa480.com. I was certain that the hosted zones in AWS were configured properly. We have one zone for the apex domain and one for the subdomain. I reviewed the hosted zones along with some tutorials from Amazon specifying how to set up a subdomain.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-2/week2-sandoval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-2/week2-sandoval/</guid>
+      <description>Brian&amp;rsquo;s Blog Week 2 The run down this week. Route 53 Early within the week Alex and Erik took the lead to setting up our route 53 so that we could be able to access our server on the internet through the domain that the team had purchased. Setting up route 53 took a bit more work then usual that Tyler had to work on it Monday in setting up the DNS records which took a good amount of work.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-2/week2-blomquist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-2/week2-blomquist/</guid>
+      <description>Erik&amp;rsquo;s Blog. Week #2 What have we done? We got our VPC, Domain, and EC2 webserver up and running last week so we have been focusing on Hugo and the Documentation portion of project 0 this week. We started by installing Hugo locally and downloaded themes from their website which was surprisingly easy. After that we just added our blog-posts.md files into the hugo project, zipped it, unpacked it onto the webserver and poff, website live.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-2/week2-kluszczynski/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-2/week2-kluszczynski/</guid>
+      <description>Tyler&amp;rsquo;s Blog. Week 2 What&amp;rsquo;s new this week? Getting ready for project &amp;ldquo;1&amp;rdquo;. We split our team into 2 smaller groups, one focusing on Ansible (Erik and Alex), and one focusing on Terraform (me and Brian). There are a few advantages and a few drawbacks with this plan.
+First, it will allow us to balance the workload more easily. It will also allow us to specialize more on one part of the assignment, and hopefully allow us to finish faster.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-3/week3-enaceanu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-3/week3-enaceanu/</guid>
+      <description>Alex’s Blog Week 3 Divide and Conquer (my portion) Project 1 is much more involved and requires a better divide and conquer strategy. Below are the tasks which I have been assigned or am also helping with: Terraform Service Infrastructure - EC2 (Nat Instance) I found terraform code examples that deploy an instance. With some minor modifications I have deployed a new instance to AWS that will act as the NAT and or bastion host.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-3/week3-sandoval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-3/week3-sandoval/</guid>
+      <description>Blog 3 This week This week was partly difficult for the fact that I was not familiar with setting up an s3 bucket and learning how terraform worked proved a bit challenging. At the end of this week I was able to install the s3 bucket through a terraform script. Initially I had to read on what an s3 bucket was since I had no idea, I came to learn that it is a great tool so that people can lock each IAM users configurations that when they apply changes to their scripts it wont create multiple copies of what has already been configured such as having another vpc that is not needed.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-3/week3-blomquist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-3/week3-blomquist/</guid>
+      <description>Erik&amp;rsquo;s Blog. Week 3 What&amp;rsquo;s new this week? Start of Project 1 We started Project 1 this week which involves working with Terraform &amp;amp; Ansible. We have been working better as a team and it has been easier to divide things among us. I was assigned the issue to create a VPC along with subnets and a internet gateway using Terraform and here is how I did it.
+0. Installation of Terraform and link it to AWS.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-3/week3-kluszczynski/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-3/week3-kluszczynski/</guid>
+      <description>Tyler&amp;rsquo;s Blog. Week 3 What&amp;rsquo;s new this week? Starting project 1 Project 1 is much more organized than Project 0 was. Each team member is assigned their own set of tasks to work on. Here are my issues: * Terraform - IAM * Improving GitHub instructions * Terraform - Load Balancers * Terraform - Route 53
+This blog, I&amp;rsquo;ll cover the process I used to set up IAM using terraform.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-enaceanu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-enaceanu/</guid>
+      <description>Alex’s Blog Week 3 Continuation of Project 1 There was still a lot of work to do with Terraform and Ansible, plus of course the many issues that arose. We got a new addition to the team and decided to delegate Ansible tasks to him. Luckily, last week I learned a lot about Terraform by writing and testing code for the NAT/Bastion and blog server instances. I also reviewed a lot of different example code, from Terraforms website which is very helpful especially with regards to modifying code with arguments.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-sandoval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-sandoval/</guid>
+      <description>Week 4 Blog The rundown this Week Tasks completed This week I ran into a bit of issues in configuring the s3 bucket initially I had setup my terraform code in the correct format. The first part of my issue is that I did not realize that I needed a back end snippet that would allow me to sync up the current .tfstate file. I needed to include a back end portion which would remotely sync the .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-blomquist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-blomquist/</guid>
+      <description>Erik&amp;rsquo;s Blog. Week 4 What&amp;rsquo;s new this week? Project 1 This week has been all about finishing up the Terraform tasks and for it to work with Ansible. One problem I ran into this week was that I could not SSH into our instances using my Mac. It gave me the error &amp;ldquo;Permission denied (publickey)&amp;rdquo; many times over, here is how I solved it.
+How to connect to AWS instances using SSH (Mac &amp;amp; Linux users) Setup and configure AWS Command Line Interface (CLI)  Open your terminal and run &amp;ldquo;pip install awscli&amp;rdquo; and wait for it to install.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-karim/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-karim/</guid>
+      <description>Shahid&amp;rsquo;s Blog. Week 4 What&amp;rsquo;s new this week? Learning about Ansible Much like a bash script allows a user to run several commands at once, Ansible allows an administrator to apply several changes to a server or group of servers at once. This is done with a list of commands that&amp;rsquo;s consolidated into a yml file called a playbook.
+Bash Script vs Ansible Playbook Here is a simple bash script: apt-get install apache2 apt-get install git  Wow the Bash Script looks really short right?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-kluszczynski/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-kluszczynski/</guid>
+      <description>Tyler&amp;rsquo;s Blog. Week 4 What&amp;rsquo;s new this week? Finishing Project 1 Although Project 1 was much more organized than Project 0, we still have some work to do in terms of organization. This will be discussed during the presentation this coming Monday.
+One of my tasks for this project was setting up the certificate for our web servers. Instead of doing this through certbot like in project 0, I used AWS Certificate Manager.</description>
+    </item>
+    
+  </channel>
+</rss>

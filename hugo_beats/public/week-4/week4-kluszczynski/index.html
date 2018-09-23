@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content=""/>
+  <meta name="twitter:description" content="Tyler&rsquo;s Blog. Week 4 What&rsquo;s new this week? Finishing Project 1 Although Project 1 was much more organized than Project 0, we still have some work to do in terms of organization. This will be discussed during the presentation this coming Monday.
+One of my tasks for this project was setting up the certificate for our web servers. Instead of doing this through certbot like in project 0, I used AWS Certificate Manager."/>
+  
+    <meta name="twitter:site" content="@your_twitter_id"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@site_author"/>
+  
+
+
+
+		
+		<meta name="author" content="site_author">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.48" />
+		<title> &middot; TEAM EAT</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="TEAM EAT" />
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/posts'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        
+                    </h1>
+                    <h2 class="headline">
+                    Jan 1, 0001 00:00
+                    · 560 words
+                    · 3 minute read
+                      <span class="tags">
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#tyler-s-blog-week-4">Tyler&rsquo;s Blog. Week 4</a>
+<ul>
+<li>
+<ul>
+<li><a href="#what-s-new-this-week">What&rsquo;s new this week?</a>
+<ul>
+<li><a href="#finishing-project-1">Finishing Project 1</a></li>
+<li><a href="#aws-certificate-manager-with-terraform">AWS Certificate Manager with Terraform</a>
+<ul>
+<li><a href="#setup-route-53">Setup Route 53</a></li>
+<li><a href="#request-a-certificate">Request a certificate</a></li>
+</ul></li>
+<li><a href="#setting-up-route-53">Setting up Route 53</a></li>
+<li><a href="#requesting-a-certificate">Requesting a Certificate</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    
+
+<h2 id="tyler-s-blog-week-4">Tyler&rsquo;s Blog. Week 4</h2>
+
+<h4 id="what-s-new-this-week">What&rsquo;s new this week?</h4>
+
+<h5 id="finishing-project-1">Finishing Project 1</h5>
+
+<p>Although Project 1 was much more organized than Project 0, we still have some work to do in terms of organization. This will be discussed during the presentation this coming Monday.</p>
+
+<p>One of my tasks for this project was setting up the certificate for our web servers. Instead of doing this through certbot like in project 0, I used AWS Certificate Manager.</p>
+
+<h5 id="aws-certificate-manager-with-terraform">AWS Certificate Manager with Terraform</h5>
+
+<p>For Project 1, we were required to use Terraform for all of our infrastructure. In order to set up an AWS Certificate with Terraform you must do the following:</p>
+
+<h6 id="setup-route-53">Setup Route 53</h6>
+
+<ul>
+<li>Create a Route 53 hosted zone using Terraform.</li>
+<li>Populate the hosted zone with record sets (apex domain along with www, and blog subdomains).</li>
+<li>Setup your DNS server to point to Route 53 NS records in your hosted zone. (This must be done manually).</li>
+</ul>
+
+<h6 id="request-a-certificate">Request a certificate</h6>
+
+<ul>
+<li>Request a certificate using Terraform for your apex
+domain and wildcard domain (*.fa480.club).</li>
+<li>Add required CNAME records to Route 53 using Terraform <em>or</em></li>
+<li>Manually confirm your DNS ownership with an Email.</li>
+</ul>
+
+<p>The following is the process I used to obtain a certificate using Terraform.</p>
+
+<h5 id="setting-up-route-53">Setting up Route 53</h5>
+
+<p>First, We have to create the Route 53 zone using Terraform.</p>
+
+<pre><code>resource &quot;aws_route53_zone&quot; &quot;main&quot; {
+  name         = &quot;fa480.club&quot;
+}
+</code></pre>
+
+<p>Then, we add 3 records to our zone. One for our apex domain, one for www and one for our blog subdomains.</p>
+
+<pre><code>resource &quot;aws_route53_record&quot; &quot;www&quot; {
+  zone_id = &quot;${aws_route53_zone.main.zone_id}&quot;
+  name    = &quot;www.fa480.club&quot;
+  type    = &quot;A&quot;
+  ttl     = &quot;300&quot;
+  records = [&quot;${aws_eip.lb.public_ip}&quot;]
+}
+resource &quot;aws_route53_record&quot; &quot;blog&quot; {
+  zone_id = &quot;${aws_route53_zone.main.zone_id}&quot;
+  name    = &quot;blog.fa480.club&quot;
+  type    = &quot;A&quot;
+  ttl     = &quot;300&quot;
+  records = [&quot;${aws_eip.lb.public_ip}&quot;]
+}
+
+resource &quot;aws_route53_record&quot; &quot;apex&quot; {
+  zone_id = &quot;${aws_route53_zone.main.zone_id}&quot;
+  name    = &quot;fa480.club&quot;
+  type    = &quot;A&quot;
+  ttl     = &quot;300&quot;
+  records = [&quot;${aws_eip.lb.public_ip}&quot;]
+}
+</code></pre>
+
+<p>Next, we have to connect our AWS nameservers to our namecheap dns, doing the following:
+<img src="img/tyler-dns.PNG" alt="" title="Image" /></p>
+
+<p>The nameservers listed are located in the NS record of our Route 53 zone. Now we are ready to request a certificate.</p>
+
+<h5 id="requesting-a-certificate">Requesting a Certificate</h5>
+
+<p>This also has to be done through terraform, and can be done in the following way:</p>
+
+<pre><code>resource &quot;aws_acm_certificate&quot; &quot;cert&quot; {
+	domain_name = &quot;fa480.club&quot;
+	subject_alternative_names = [&quot;*.fa480.club&quot;]
+	validation_method = &quot;DNS&quot;
+}
+</code></pre>
+
+<p>This creates a certificate in AWS ACM, specified to be validated through DNS.</p>
+
+<p>At this point, if you were on the console, AWS would provide records you can simply click on to add to your route 53 zone, then be finished.</p>
+
+<p>Because we are doing terraform however, we also need to add two additional resources to our route 53 for validation:</p>
+
+<pre><code>resource &quot;aws_route53_record&quot; &quot;apex_validation&quot; {
+  name = &quot;${aws_acm_certificate.cert.domain_validation_options.0.resource_record_name}&quot;
+  type = &quot;${aws_acm_certificate.cert.domain_validation_options.0.resource_record_type}&quot;
+  zone_id = &quot;${aws_route53_zone.main.zone_id}&quot;
+  records = [&quot;${aws_acm_certificate.cert.domain_validation_options.0.resource_record_value}&quot;]
+  ttl = 60
+}
+
+resource &quot;aws_route53_record&quot; &quot;wildcard_validation&quot; {
+  name = &quot;${aws_acm_certificate.cert.domain_validation_options.1.resource_record_name}&quot;
+  type = &quot;${aws_acm_certificate.cert.domain_validation_options.1.resource_record_type}&quot;
+  zone_id = &quot;${aws_route53_zone.main.zone_id}&quot;
+  records = [&quot;${aws_acm_certificate.cert.domain_validation_options.1.resource_record_value}&quot;]
+  ttl = 60
+}
+</code></pre>
+
+<p>These simply take the two CNAME records that amazon provides, and adds them to the Route 53 zone.</p>
+
+<p>Finally, we can add an aws_acm_certificate_validation resource to wait until the certificate gets authorized by AWS, but this step isn&rsquo;t required, and should authorize automatically after around an hour.</p>
+
+<pre><code>resource &quot;aws_acm_certificate_validation&quot; &quot;cert&quot; {
+  certificate_arn = &quot;${aws_acm_certificate.cert.arn}&quot;
+  validation_record_fqdns = [
+    &quot;${aws_route53_record.apex_validation.fqdn}&quot;,
+    &quot;${aws_route53_record.wildcard_validation.fqdn}&quot;,
+  ]
+}
+</code></pre>
+
+<p>Finally, we&rsquo;re done setting up our certificate and it can be added to the ALB on a port 443 listener to do decryption.</p>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=%2fweek-4%2fweek4-kluszczynski%2f -  by @your_twitter_id"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'your_disqus_short_name'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.facebook.com/nodejh">
+        <i class="fa fa-facebook-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/nodejh">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/nodejh">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> site_author
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'your_google_analytics_id', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>

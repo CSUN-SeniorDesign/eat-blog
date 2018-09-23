@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 1s on TEAM EAT</title>
+    <link>/week-1/</link>
+    <description>Recent content in Week 1s on TEAM EAT</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="/week-1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/week-1/week1-enaceanu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-1/week1-enaceanu/</guid>
+      <description>Alex&amp;rsquo;s blog. Week 1. Initial Phases Our course started with an introduction to what we will be working on this semester and how to achieve those goals. There is a big focus on collaboration, not just within our group but also with Comp Sci students. We swiftly formed a group consisting of myself, Tyler K and Erik B. Our 4th member was MIA for a while but we ended up with a new edition, Brian.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-1/week1-sandoval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-1/week1-sandoval/</guid>
+      <description>Brian&amp;rsquo;s Blog Week 1 Organization In terms of organization, in aws I am using an education account that I used in a previous class. I was able to renew the credits back to a full 100 dollars so it should not be an issue in terms of funding on my end, my team took in the liberty to set up the vpc and configure the subnets to some extent. Since I was transferred from a previous group I did not have any input in the early stages but was able to start putting input from where the team had left off which was installing an instance.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-1/week1-blomquist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-1/week1-blomquist/</guid>
+      <description>Erik&amp;rsquo;s Blog. Week #1 We started of the week by forming the team EAT that consist of the members Alex, Bryan, Tyler, and Myself. We all came into this class with different backgrounds and experiences but we have managed to get a good start on the project and our team work.
+What have we done? We have been getting familiar with GitHub, markdown, how to handle repositories, issues, pull requests etc.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-1/week1-kluszczynski/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-1/week1-kluszczynski/</guid>
+      <description>Tyler&amp;rsquo;s Blog. Week 1 What&amp;rsquo;s new this week? AWS Issues Week 1, we formed groups, created github, slack and AWS accounts. Some of our team members have had trouble receiving their $100 credit from AWS. Alex and Erik set up their AWS accounts incorrectly so we will have to wait for their credits to come in later. Brian&amp;rsquo;s account has already used some of the credits in a previous class.</description>
+    </item>
+    
+  </channel>
+</rss>

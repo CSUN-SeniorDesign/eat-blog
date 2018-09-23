@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content=""/>
+  <meta name="twitter:description" content="Erik&rsquo;s Blog. Week 3 What&rsquo;s new this week? Start of Project 1 We started Project 1 this week which involves working with Terraform &amp; Ansible. We have been working better as a team and it has been easier to divide things among us. I was assigned the issue to create a VPC along with subnets and a internet gateway using Terraform and here is how I did it.
+0. Installation of Terraform and link it to AWS."/>
+  
+    <meta name="twitter:site" content="@your_twitter_id"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@site_author"/>
+  
+
+
+
+		
+		<meta name="author" content="site_author">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.48" />
+		<title> &middot; TEAM EAT</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="TEAM EAT" />
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/posts'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        
+                    </h1>
+                    <h2 class="headline">
+                    Jan 1, 0001 00:00
+                    · 497 words
+                    · 3 minute read
+                      <span class="tags">
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#erik-s-blog-week-3">Erik&rsquo;s Blog. Week 3</a>
+<ul>
+<li>
+<ul>
+<li><a href="#what-s-new-this-week">What&rsquo;s new this week?</a>
+<ul>
+<li><a href="#start-of-project-1">Start of Project 1</a></li>
+<li><a href="#0-installation-of-terraform-and-link-it-to-aws">0. Installation of Terraform and link it to AWS.</a></li>
+<li><a href="#1-how-to-use-terraform-to-build-a-vpc">1. How to use Terraform to build a VPC</a></li>
+<li><a href="#2-how-to-create-subnets-with-terraform">2. How to create subnets with Terraform</a></li>
+<li><a href="#3-how-to-create-an-internet-gateway">3. How to create an Internet Gateway</a></li>
+</ul></li>
+<li><a href="#what-to-do-next-week">What to do next week?</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    
+
+<h2 id="erik-s-blog-week-3">Erik&rsquo;s Blog. Week 3</h2>
+
+<h4 id="what-s-new-this-week">What&rsquo;s new this week?</h4>
+
+<h5 id="start-of-project-1">Start of Project 1</h5>
+
+<p>We started Project 1 this week which involves working with Terraform &amp; Ansible. We have been working better as a team and it has been easier to divide things among us. I was assigned the issue to create a VPC along with subnets and a internet gateway using Terraform and here is how I did it.</p>
+
+<h5 id="0-installation-of-terraform-and-link-it-to-aws">0. Installation of Terraform and link it to AWS.</h5>
+
+<ol>
+<li>Download the binary package from:
+ <a href="https://www.terraform.io/downloads.html">https://www.terraform.io/downloads.html</a></li>
+<li>Place unzip the content into a new folder called &ldquo;Terraform&rdquo; under C:<br /></li>
+
+<li><p>cd into your new folder and type &ldquo;terraform version&rdquo; and you should get a similar output.</p>
+
+<pre><code>  c:\&gt;cd C:\Terraform
+  C:\Terraform&gt;
+  C:\Terraform&gt;terraform version
+  Terraform v0.11.8
+</code></pre></li>
+
+<li><p>You now have Terraform installed!</p></li>
+
+<li><p>You need to link your IAM account to Terraform and you do that by open your aws cli and type &ldquo;aws configure&rdquo; and fill out your access key.</p>
+
+<pre><code>  $ aws configure
+  AWS Access Key ID [None]: YOUR ACCESS KEY
+  AWS Secret Access Key [None]:  YOUR SECRET ACCES KEY
+  Default region name [None]: us-west-2
+  Default output format [None]: json
+</code></pre></li>
+</ol>
+
+<h5 id="1-how-to-use-terraform-to-build-a-vpc">1. How to use Terraform to build a VPC</h5>
+
+<ol>
+<li>Once Terraform has been successfully installed and linked to your aws IAM account you are ready to go. Simply create a new file in your terraform folder called &ldquo;VPC.tf&rdquo;.</li>
+
+<li><p>Add the following code to VPC.tf and save it.</p>
+
+<pre><code>  resource &quot;aws_vpc&quot; &quot;main&quot; {
+    cidr_block = &quot;172.31.0.0/16&quot;
+      tags {
+        Name = &quot;Main-VPC&quot;
+    }
+  }
+</code></pre></li>
+
+<li><p>Open your cmd and navigate to C:\Terraform and then type &ldquo;terraform apply&rdquo; and then &ldquo;yes&rdquo; to run all of your .tf files.</p>
+
+<pre><code>  Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+</code></pre></li>
+
+<li><p>You should now be able to sign in to your aws console and find a VPC there.</p></li>
+</ol>
+
+<p><img src="/img/erikVPC.png" alt="VPC" /></p>
+
+<h5 id="2-how-to-create-subnets-with-terraform">2. How to create subnets with Terraform</h5>
+
+<ol>
+<li><p>Here is how you create 3 public and 3 private subnets in different availability zones.</p>
+
+<pre><code>   resource &quot;aws_subnet&quot; &quot;privsubnet1&quot; {
+     vpc_id     = &quot;${aws_vpc.main.id}&quot;
+     cidr_block = &quot;172.31.32.0/19&quot;
+     availability_zone       = &quot;us-west-2a&quot;
+     tags {
+       Name = &quot;Privsubnet1&quot;
+     }
+   }
+
+   resource &quot;aws_subnet&quot; &quot;privsubnet2&quot; {
+     vpc_id     = &quot;${aws_vpc.main.id}&quot;
+     cidr_block = &quot;172.31.64.0/19&quot;
+     availability_zone       = &quot;us-west-2b&quot;
+     tags {
+       Name = &quot;Privsubnet2&quot;
+     }
+   }
+
+   resource &quot;aws_subnet&quot; &quot;privsubnet3&quot; {
+     vpc_id     = &quot;${aws_vpc.main.id}&quot;
+     cidr_block = &quot;172.31.96.0/19&quot;
+     availability_zone       = &quot;us-west-2c&quot;
+     tags {
+       Name = &quot;Privsubnet3&quot;
+     }
+   }
+
+   resource &quot;aws_subnet&quot; &quot;pubsubnet1&quot; {
+     vpc_id     = &quot;${aws_vpc.main.id}&quot;
+     cidr_block = &quot;172.31.128.0/19&quot;
+     availability_zone       = &quot;us-west-2a&quot;
+     tags {
+       Name = &quot;Pubsubnet1&quot;
+    }
+   }
+
+   resource &quot;aws_subnet&quot; &quot;pubsubnet2&quot; {
+     vpc_id     = &quot;${aws_vpc.main.id}&quot;
+     cidr_block = &quot;172.31.160.0/19&quot;
+     availability_zone       = &quot;us-west-2b&quot;
+     tags {
+       Name = &quot;Pubsubnet2&quot;
+     }
+   }
+
+   resource &quot;aws_subnet&quot; &quot;pubsubnet3&quot; {
+     vpc_id     = &quot;${aws_vpc.main.id}&quot;
+     cidr_block = &quot;172.31.192.0/19&quot;
+     availability_zone       = &quot;us-west-2c&quot;
+     tags {
+       Name = &quot;Pubsubnet3&quot;
+     }
+   }
+</code></pre></li>
+</ol>
+
+<h5 id="3-how-to-create-an-internet-gateway">3. How to create an Internet Gateway</h5>
+
+<pre><code>      resource &quot;aws_internet_gateway&quot; &quot;gw&quot; {
+        vpc_id = &quot;${aws_vpc.main.id}&quot;
+      }
+</code></pre>
+
+<h4 id="what-to-do-next-week">What to do next week?</h4>
+
+<p>We are planning to finish the Terraform tasks over the weekend so that we have enough of time to spend on the tasks for Ansible, Deliverables and our Presentation.</p>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=%2fweek-3%2fweek3-blomquist%2f -  by @your_twitter_id"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'your_disqus_short_name'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.facebook.com/nodejh">
+        <i class="fa fa-facebook-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/nodejh">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/nodejh">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> site_author
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'your_google_analytics_id', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>

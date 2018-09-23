@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content=""/>
+  <meta name="twitter:description" content="Shahid&rsquo;s Blog. Week 4 What&rsquo;s new this week? Learning about Ansible Much like a bash script allows a user to run several commands at once, Ansible allows an administrator to apply several changes to a server or group of servers at once. This is done with a list of commands that&rsquo;s consolidated into a yml file called a playbook.
+Bash Script vs Ansible Playbook Here is a simple bash script: apt-get install apache2 apt-get install git  Wow the Bash Script looks really short right?"/>
+  
+    <meta name="twitter:site" content="@your_twitter_id"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@site_author"/>
+  
+
+
+
+		
+		<meta name="author" content="site_author">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.48" />
+		<title> &middot; TEAM EAT</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="TEAM EAT" />
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/posts'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        
+                    </h1>
+                    <h2 class="headline">
+                    Jan 1, 0001 00:00
+                    · 376 words
+                    · 2 minute read
+                      <span class="tags">
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#shahid-s-blog-week-4">Shahid&rsquo;s Blog. Week 4</a>
+<ul>
+<li>
+<ul>
+<li><a href="#what-s-new-this-week">What&rsquo;s new this week?</a>
+<ul>
+<li><a href="#learning-about-ansible">Learning about Ansible</a></li>
+<li><a href="#bash-script-vs-ansible-playbook">Bash Script vs Ansible Playbook</a></li>
+<li><a href="#installing-ansible">Installing Ansible</a></li>
+<li><a href="#configuring-ansible">Configuring Ansible</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    
+
+<h2 id="shahid-s-blog-week-4">Shahid&rsquo;s Blog. Week 4</h2>
+
+<h4 id="what-s-new-this-week">What&rsquo;s new this week?</h4>
+
+<h5 id="learning-about-ansible">Learning about Ansible</h5>
+
+<p>Much like a bash script allows a user to run several commands at once, Ansible allows an administrator to apply several changes to a server or group of servers at once. This is done with a list of commands that&rsquo;s consolidated into a yml file called a playbook.</p>
+
+<h5 id="bash-script-vs-ansible-playbook">Bash Script vs Ansible Playbook</h5>
+
+<p>Here is a simple bash script: <br></p>
+
+<pre><code>apt-get install apache2
+apt-get install git
+</code></pre>
+
+<p>Wow the Bash Script looks really short right? <br>
+Let&rsquo;s now take a look at the Ansible Playbook: <br></p>
+
+<pre><code>    ---
+    - hosts: apache
+      sudo: yes
+          tasks:
+            - name: install apache2 and git packages
+              apt: name= {{ item }} update_cache=yes state=latest
+              with_items:
+                - apache2
+                - git
+</code></pre>
+
+<p>Even though the Bash Script is much shorter, the Ansible playbook forces you to document what you&rsquo;re doing. Not only that, the playbook can be used on many different machines automatically while the bash script would have to be run one by one on each machine. But if you like Bash Scripts, don&rsquo;t get encouraged because they&rsquo;re still really useful! (Like in the next section&hellip;)</p>
+
+<h5 id="installing-ansible">Installing Ansible</h5>
+
+<p>Ansible can be installed in 4 easy steps:
+  1. Add a repository manager:</p>
+
+<pre><code>  sudo apt-get -y install software-properties-common
+</code></pre>
+
+<ol>
+<li>Add the ansbile repository:</li>
+</ol>
+
+<pre><code>  sudo apt-add-repository ppa:ansible/Ansible
+</code></pre>
+
+<ol>
+<li>Update the available packages:</li>
+</ol>
+
+<pre><code>  sudo apt-get -y update
+</code></pre>
+
+<ol>
+<li>Install ansible:</li>
+</ol>
+
+<pre><code>  sudo apt-get -y install ansible
+</code></pre>
+
+<p>That&rsquo;s all it takes to install Ansible!</p>
+
+<h5 id="configuring-ansible">Configuring Ansible</h5>
+
+<p>Ansible can be configured in 3 easy steps:
+  1. Create an SSH Key:</p>
+
+<pre><code>  ssh-keygen
+</code></pre>
+
+<ol>
+<li>Share SSH key with all remote hosts to be used with ansible:</li>
+</ol>
+
+<pre><code>      yes '' | ssh-copy-id username@remote_host
+</code></pre>
+
+<pre><code>A bash script can be used to give ssh keys to multiple servers at once
+```
+    #!/bin/bash
+    for ip in `cat /home/list_of_servers`; do
+    ssh-copy-id -i ~/.ssh/id_rsa.pub $ip
+```
+
+Replace '/home/list_of_servers' with the location of a file that contains the IP addresses of the servers. Also replace '~/.ssh/id_rsa.pub' with the location of the ssh key you want to use on those servers listed in the list_of_servers file.
+</code></pre>
+
+<ol>
+<li><p>Configure Ansible hosts file:</p>
+
+<pre><code>sudo nano /etc/ansible/hosts
+</code></pre>
+
+<p>Inside the hosts file type this:</p>
+
+<pre><code>  [group_name]
+  alias ansible_ssh_host=your_server_id
+</code></pre>
+
+<p>3a. Then configure the group file named apache:
+    <code>
+    sudo mkdir /etc/ansible/group_vars
+    sudo nano /etc/ansible/group_vars/apache
+</code></p>
+
+<p>Inside the apache file type this:</p>
+
+<pre><code>  ---
+  ansible_ssh_host: root
+</code></pre>
+
+<p>Congratulations! You&rsquo;ve set up Ansible!</p></li>
+</ol>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=%2fweek-4%2fweek4-karim%2f -  by @your_twitter_id"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'your_disqus_short_name'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.facebook.com/nodejh">
+        <i class="fa fa-facebook-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/nodejh">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/nodejh">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> site_author
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'your_google_analytics_id', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>
