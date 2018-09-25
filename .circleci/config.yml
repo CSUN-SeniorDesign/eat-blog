@@ -1,9 +1,8 @@
-commands:
-  commandName: 
-    description: "Test command."
-    parameters:
-      to:
-        type: string
-        default: "Hello World."
-      steps:
-        - run: echo <<parameters.to>>
+version: 2
+jobs:
+  build: 
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run: echo "Hello World."
