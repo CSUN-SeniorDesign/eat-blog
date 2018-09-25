@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content=""/>
+  <meta name="twitter:description" content="Erik&rsquo;s Blog. Week 4 What&rsquo;s new this week? Project 1 This week has been all about finishing up the Terraform tasks and for it to work with Ansible. One problem I ran into this week was that I could not SSH into our instances using my Mac. It gave me the error &ldquo;Permission denied (publickey)&rdquo; many times over, here is how I solved it.
+How to connect to AWS instances using SSH (Mac &amp; Linux users) Setup and configure AWS Command Line Interface (CLI)  Open your terminal and run &ldquo;pip install awscli&rdquo; and wait for it to install."/>
+  
+    <meta name="twitter:site" content="@your_twitter_id"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@site_author"/>
+  
+
+
+
+		
+		<meta name="author" content="site_author">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.48" />
+		<title> &middot; TEAM EAT</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="TEAM EAT" />
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/posts'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        
+                    </h1>
+                    <h2 class="headline">
+                    Jan 1, 0001 00:00
+                    · 546 words
+                    · 3 minute read
+                      <span class="tags">
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#erik-s-blog-week-4">Erik&rsquo;s Blog. Week 4</a>
+<ul>
+<li>
+<ul>
+<li><a href="#what-s-new-this-week">What&rsquo;s new this week?</a>
+<ul>
+<li><a href="#project-1">Project 1</a></li>
+<li><a href="#how-to-connect-to-aws-instances-using-ssh-mac-linux-users">How to connect to AWS instances using SSH (Mac &amp; Linux users)</a>
+<ul>
+<li><a href="#setup-and-configure-aws-command-line-interface-cli">Setup and configure AWS Command Line Interface (CLI)</a></li>
+<li><a href="#connect-to-your-instance-with-a-public-network">Connect to your instance with a public network.</a></li>
+<li><a href="#connect-to-your-instance-with-a-private-network">Connect to your instance with a private network.</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    
+
+<h2 id="erik-s-blog-week-4">Erik&rsquo;s Blog. Week 4</h2>
+
+<h4 id="what-s-new-this-week">What&rsquo;s new this week?</h4>
+
+<h5 id="project-1">Project 1</h5>
+
+<p>This week has been all about finishing up the Terraform tasks and for it to work with Ansible. One problem I ran into this week was that I could not SSH into our instances using my Mac. It gave me the error &ldquo;Permission denied (publickey)&rdquo; many times over, here is how I solved it.</p>
+
+<h5 id="how-to-connect-to-aws-instances-using-ssh-mac-linux-users">How to connect to AWS instances using SSH (Mac &amp; Linux users)</h5>
+
+<h6 id="setup-and-configure-aws-command-line-interface-cli">Setup and configure AWS Command Line Interface (CLI)</h6>
+
+<ol>
+<li><p>Open your terminal and run &ldquo;pip install awscli&rdquo; and wait for it to install. You should
+get a message similar to the one below when it is finished.</p>
+
+<pre><code>Successfully installed PyYAML-3.13 awscli-1.16.18 botocore-1.12.8 ....
+</code></pre></li>
+
+<li><p>You can verify that aws cli was installed with &ldquo;aws &ndash;version&rdquo;.</p>
+
+<pre><code>$ aws --version
+aws-cli/1.16.10 Python/2.7.10 Darwin/17.7.0 botocore/1.12.0
+</code></pre></li>
+
+<li><p>We need to create the Access key now and we can do that by:</p>
+
+<ol>
+<li>Login to your aws console</li>
+<li>Click on your user name on the right top corner then &ldquo;My Security Credentials&rdquo;</li>
+<li>Click &ldquo;Users&rdquo; on the left side and then click on your user name. You should
+now see a summary of that user.</li>
+<li>Click &ldquo;Security credentials&rdquo; and then &ldquo;Create access key&rdquo;</li>
+<li>You can either download and store the .csv in a secure place or just write them
+down somewhere else, but remember that you cannot recover or view your secret
+access key if you lose it.</li>
+</ol></li>
+
+<li><p>You can now open your terminal again and run &ldquo;aws configure&rdquo; where it will ask for
+your Access key you just created.</p>
+
+<pre><code>    $ aws configure
+    AWS Access Key ID [None]: YOUR ACCESS KEY
+    AWS Secret Access Key [None]: YOUR SECRET ACCESS KEY
+    Default region name [None]: YOUR REGION
+    Default output format [None]: YOUR FORMAT
+</code></pre></li>
+</ol>
+
+<h6 id="connect-to-your-instance-with-a-public-network">Connect to your instance with a public network.</h6>
+
+<ol>
+<li>Open your terminal again and cd into the folder where you have your privatekey.pem
+file stored and run &ldquo;chmod 400 privatekey.pem&rdquo; to change the permissions of the key.</li>
+<li>Most Mac &amp; Linux machines have SSH preinstalled but you can check by running &ldquo;ssh&rdquo; in your terminal. Check out <a href="http://www.openssh.com">http://www.openssh.com</a> if the terminal does not recognize the command.</li>
+
+<li><p>We should now be able to successfully connect through SSH by running: &ldquo;ssh -A /path_to_key/privatekey.pem username@public_dns_name&rdquo;
+(Amazon Linux uses ec2-user as username and -A enables agent forwarding).</p>
+
+<pre><code>    $ ssh -A privatekey.pem ec2-user@34.213.12.211
+    Last login: Fri Sep 21 23:26:43 2018 from 76-221-172-215.lightspeed.irvnca.sbcglobal.net
+
+    __|  __|_  )
+    _|  (     /   Amazon Linux AMI
+    __\___|___|
+
+    https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+    13 package(s) needed for security, out of 24 available
+    Run &quot;sudo yum update&quot; to apply all updates.
+</code></pre></li>
+</ol>
+
+<h6 id="connect-to-your-instance-with-a-private-network">Connect to your instance with a private network.</h6>
+
+<ol>
+<li><p>You are now able to SSH into your instance with a private ip by running &ldquo;ssh username@private-ip&rdquo;. (Ubuntu uses ubuntu as username)</p>
+
+<pre><code>$ ssh ubuntu@PrivateIP-1
+Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.4.0-1065-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user &quot;root&quot;), use &quot;sudo &lt;command&gt;&quot;.
+See &quot;man sudo_root&quot; for details.
+
+ubuntu@PrivateIP-1:~$
+</code></pre></li>
+</ol>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=%2fweek-4%2fweek4-blomquist%2f -  by @your_twitter_id"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'your_disqus_short_name'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.facebook.com/nodejh">
+        <i class="fa fa-facebook-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/nodejh">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/nodejh">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> site_author
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'your_google_analytics_id', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>

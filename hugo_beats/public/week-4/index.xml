@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 4s on TEAM EAT</title>
+    <link>/week-4/</link>
+    <description>Recent content in Week 4s on TEAM EAT</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="/week-4/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-enaceanu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-enaceanu/</guid>
+      <description>Alex’s Blog Week 3 Continuation of Project 1 There was still a lot of work to do with Terraform and Ansible, plus of course the many issues that arose. We got a new addition to the team and decided to delegate Ansible tasks to him. Luckily, last week I learned a lot about Terraform by writing and testing code for the NAT/Bastion and blog server instances. I also reviewed a lot of different example code, from Terraforms website which is very helpful especially with regards to modifying code with arguments.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-sandoval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-sandoval/</guid>
+      <description>Week 4 Blog The rundown this Week Tasks completed This week I ran into a bit of issues in configuring the s3 bucket initially I had setup my terraform code in the correct format. The first part of my issue is that I did not realize that I needed a back end snippet that would allow me to sync up the current .tfstate file. I needed to include a back end portion which would remotely sync the .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-blomquist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-blomquist/</guid>
+      <description>Erik&amp;rsquo;s Blog. Week 4 What&amp;rsquo;s new this week? Project 1 This week has been all about finishing up the Terraform tasks and for it to work with Ansible. One problem I ran into this week was that I could not SSH into our instances using my Mac. It gave me the error &amp;ldquo;Permission denied (publickey)&amp;rdquo; many times over, here is how I solved it.
+How to connect to AWS instances using SSH (Mac &amp;amp; Linux users) Setup and configure AWS Command Line Interface (CLI)  Open your terminal and run &amp;ldquo;pip install awscli&amp;rdquo; and wait for it to install.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-karim/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-karim/</guid>
+      <description>Shahid&amp;rsquo;s Blog. Week 4 What&amp;rsquo;s new this week? Learning about Ansible Much like a bash script allows a user to run several commands at once, Ansible allows an administrator to apply several changes to a server or group of servers at once. This is done with a list of commands that&amp;rsquo;s consolidated into a yml file called a playbook.
+Bash Script vs Ansible Playbook Here is a simple bash script: apt-get install apache2 apt-get install git  Wow the Bash Script looks really short right?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-4/week4-kluszczynski/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-4/week4-kluszczynski/</guid>
+      <description>Tyler&amp;rsquo;s Blog. Week 4 What&amp;rsquo;s new this week? Finishing Project 1 Although Project 1 was much more organized than Project 0, we still have some work to do in terms of organization. This will be discussed during the presentation this coming Monday.
+One of my tasks for this project was setting up the certificate for our web servers. Instead of doing this through certbot like in project 0, I used AWS Certificate Manager.</description>
+    </item>
+    
+  </channel>
+</rss>

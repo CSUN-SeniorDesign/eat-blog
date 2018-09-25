@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 3s on TEAM EAT</title>
+    <link>/week-3/</link>
+    <description>Recent content in Week 3s on TEAM EAT</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="/week-3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/week-3/week3-enaceanu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-3/week3-enaceanu/</guid>
+      <description>Alex’s Blog Week 3 Divide and Conquer (my portion) Project 1 is much more involved and requires a better divide and conquer strategy. Below are the tasks which I have been assigned or am also helping with: Terraform Service Infrastructure - EC2 (Nat Instance) I found terraform code examples that deploy an instance. With some minor modifications I have deployed a new instance to AWS that will act as the NAT and or bastion host.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-3/week3-sandoval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-3/week3-sandoval/</guid>
+      <description>Blog 3 This week This week was partly difficult for the fact that I was not familiar with setting up an s3 bucket and learning how terraform worked proved a bit challenging. At the end of this week I was able to install the s3 bucket through a terraform script. Initially I had to read on what an s3 bucket was since I had no idea, I came to learn that it is a great tool so that people can lock each IAM users configurations that when they apply changes to their scripts it wont create multiple copies of what has already been configured such as having another vpc that is not needed.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-3/week3-blomquist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-3/week3-blomquist/</guid>
+      <description>Erik&amp;rsquo;s Blog. Week 3 What&amp;rsquo;s new this week? Start of Project 1 We started Project 1 this week which involves working with Terraform &amp;amp; Ansible. We have been working better as a team and it has been easier to divide things among us. I was assigned the issue to create a VPC along with subnets and a internet gateway using Terraform and here is how I did it.
+0. Installation of Terraform and link it to AWS.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/week-3/week3-kluszczynski/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/week-3/week3-kluszczynski/</guid>
+      <description>Tyler&amp;rsquo;s Blog. Week 3 What&amp;rsquo;s new this week? Starting project 1 Project 1 is much more organized than Project 0 was. Each team member is assigned their own set of tasks to work on. Here are my issues: * Terraform - IAM * Improving GitHub instructions * Terraform - Load Balancers * Terraform - Route 53
+This blog, I&amp;rsquo;ll cover the process I used to set up IAM using terraform.</description>
+    </item>
+    
+  </channel>
+</rss>

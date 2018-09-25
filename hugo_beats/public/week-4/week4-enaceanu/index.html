@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content=""/>
+  <meta name="twitter:description" content="Alex’s Blog Week 3 Continuation of Project 1 There was still a lot of work to do with Terraform and Ansible, plus of course the many issues that arose. We got a new addition to the team and decided to delegate Ansible tasks to him. Luckily, last week I learned a lot about Terraform by writing and testing code for the NAT/Bastion and blog server instances. I also reviewed a lot of different example code, from Terraforms website which is very helpful especially with regards to modifying code with arguments."/>
+  
+    <meta name="twitter:site" content="@your_twitter_id"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@site_author"/>
+  
+
+
+
+		
+		<meta name="author" content="site_author">
+		<meta name="description" content="Site Description">
+		<meta name="generator" content="Hugo 0.48" />
+		<title> &middot; TEAM EAT</title>
+		<link rel="shortcut icon" href="/images/favicon.ico">
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		
+
+		
+		<link href="/index.xml" rel="alternate" type="application/rss+xml" title="TEAM EAT" />
+		
+
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='/posts'>Archive</a>
+	<a href='/tags'>Tags</a>
+	<a href='/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        
+                    </h1>
+                    <h2 class="headline">
+                    Jan 1, 0001 00:00
+                    · 805 words
+                    · 4 minute read
+                      <span class="tags">
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#alex-s-blog-week-3">Alex’s Blog Week 3</a>
+<ul>
+<li>
+<ul>
+<li><a href="#continuation-of-project-1">Continuation of Project 1</a></li>
+<li><a href="#security-groups">Security groups</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    
+
+<h2 id="alex-s-blog-week-3">Alex’s Blog Week 3</h2>
+
+<h4 id="continuation-of-project-1">Continuation of Project 1</h4>
+
+<p>There was still a lot of work to do with Terraform and Ansible, plus of course
+the many issues that arose. We got a new addition to the team and decided to
+delegate Ansible tasks to him. Luckily, last week I learned a lot about Terraform
+by writing and testing code for the NAT/Bastion and blog server instances. I also
+reviewed a lot of different example code, from Terraforms website which is very
+helpful especially with regards to modifying code with arguments. Also the
+proper use of interpolation was
+something I originally missed, figuring that out made the scripting potential
+more robust. After that the NAT instance code was cut down to these few lines
+with the desired arguments that place our NAT instance in its proper location:</p>
+
+<pre><code>resource &quot;aws_instance&quot; &quot;NAT&quot; {
+ami           = &quot;ami-40d1f038&quot;
+ instance_type = &quot;t2.micro&quot;
+ subnet_id = &quot;${aws_subnet.pubsubnet1.id}&quot;
+ associate_public_ip_address = true
+ vpc_security_group_ids = [&quot;${aws_security_group.NATSG.id}&quot;]
+   key_name = &quot;${aws_key_pair.deployer.key_name}&quot;
+tags {
+   Name = &quot;NAT Instance&quot;
+  }
+}
+</code></pre>
+
+<p>Once this script was validated as working, the same refinement was applied to
+blog server instances which are deployed with similar code, except that code
+specifies that the servers to spawn in a private subnet with a different security
+group. We also had to distribute a key pair to each instance for authentication.
+This was accomplished with the &ldquo;key_name&rdquo; argument.</p>
+
+<h4 id="security-groups">Security groups</h4>
+
+<p>With my new found yet minimal terraform skills I shifted to researching security
+groups. I decided to start by drawing the network diagram, something the team
+and I have decided to  do at the beginning of each project from now on. After
+the diagram was drawn, I was able to visualize the VPC better and especially
+analyze the flow of traffic better.</p>
+
+<p>Here is the code that I used to confiugre the the security group for the
+NAT/Bastion instance:</p>
+
+<pre><code>resource &quot;aws_security_group&quot; &quot;NATSG&quot; {
+name        = &quot;NATSG&quot;
+description = &quot;NAT_security_group&quot;
+vpc_id      = &quot;${aws_vpc.main.id}&quot;
+
+ingress {
+description = &quot;Allow inbound HTTP traffic.&quot;
+  from_port   = 80
+  to_port     = 80
+  protocol    = &quot;tcp&quot;
+  cidr_blocks = [&quot;0.0.0.0/0&quot;]
+}
+
+ingress {
+description = &quot;Allow inbound HTTPS traffic&quot;
+  from_port   = 443
+  to_port     = 443
+  protocol    = &quot;tcp&quot;
+  cidr_blocks = [&quot;0.0.0.0/0&quot;]
+}
+
+ingress {
+description = &quot;Allow inbound SSH access&quot;
+  from_port   = 22
+  to_port     = 22
+  protocol    = &quot;tcp&quot;
+  cidr_blocks = [&quot;0.0.0.0/0&quot;]
+}
+
+egress {
+description = &quot;Allow outbound SSH access&quot;
+ from_port    = 22
+ to_port      = 22
+ protocol     = &quot;tcp&quot;
+ cidr_blocks  = [&quot;0.0.0.0/0&quot;]
+}
+
+egress {
+description = &quot;Allow outbound HTTP access to the Internet&quot;
+  from_port    = 80
+  to_port      = 80
+  protocol     = &quot;tcp&quot;
+  cidr_blocks  = [&quot;0.0.0.0/0&quot;]
+}
+
+egress {
+description = &quot;Allow outbound HTTPS access to the Internet&quot;
+  from_port    = 443
+  to_port      = 443
+  protocol     = &quot;tcp&quot;
+  cidr_blocks  = [&quot;0.0.0.0/0&quot;]
+  }
+}
+</code></pre>
+
+<p>As you can see, this code is very straight forward. The important part is
+specifying the ports and source and destination IP addresses. I recommend
+adding a description for each inbound and outbound rule so that it displays in
+the AWS console.
+Once I verified this code was working, the same process was followed for the
+Blog security group. The rules are different for this group since TLS/SSL
+decryption occurs at the application load balancer in the public subnet.
+Therefore there is no need for port 443 to be open as seen in the code below:</p>
+
+<pre><code>  resource &quot;aws_security_group&quot; &quot;BlogSG&quot;{
+  name = &quot;BlogSG&quot;
+     description = &quot;Blog security group&quot;
+      vpc_id = &quot;${aws_vpc.main.id}&quot;
+
+    ingress {
+    description = &quot;Allow SSH traffic&quot;
+         from_port     = 22
+         to_port       = 22
+         protocol      = &quot;tcp&quot;
+         cidr_blocks   = [&quot;0.0.0.0/0&quot;]
+      }
+
+    egress {
+    description = &quot;Allow SSH traffic&quot;
+          from_port     = 22
+          to_port       = 22
+          protocol      = &quot;tcp&quot;
+          cidr_blocks   = [&quot;0.0.0.0/0&quot;]
+      }
+
+    ingress {
+    description = &quot;Allow HTTP traffic from pubsubnet1&quot;
+          from_port     = 80
+          to_port       = 80
+          protocol      = &quot;tcp&quot;
+          cidr_blocks   = [&quot;172.31.128.0/19&quot;]
+      }
+
+    egress {
+    description = &quot;Allow HTTP traffic to pubsubnet1&quot;
+         from_port     = 80
+         to_port       = 80
+         protocol      = &quot;tcp&quot;
+         cidr_blocks   = [&quot;172.31.128.0/19&quot;]
+      }
+  }
+</code></pre>
+
+<p>After the code was validated and the team got some state locking issues fixed,
+we blew away our entire VPC and ran all our refined terraform code together and
+we ere happy to see everything worked out. We then manually SSH&rsquo;ed into our
+NAT/Bastion instance since it is the secure entry point to our network, and
+subsequently into our bog servers. Achieving this required a slightly different
+configuration for me since I use putty to connect to our instances. I had to use
+pageant to add the key we use instead of adding it for each session. I also had
+to select, agent forwarding so that the key can be used for authenticating our
+connection to the blog servers as well. Once this all worked, it showed us that
+our networking and security groups were set up properly. This meant that the
+production environment was ready for configuration and deployment of software
+and our blog via Ansible!</p>
+
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=%2fweek-4%2fweek4-enaceanu%2f -  by @your_twitter_id"><span class="icon-twitter"> tweet</span></a>
+
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>
+
+            
+
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'your_disqus_short_name'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.facebook.com/nodejh">
+        <i class="fa fa-facebook-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/nodejh">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/nodejh">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <p class="small">
+    
+       © Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> site_author
+    
+    </p>
+    <p class="small">
+        Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'your_google_analytics_id', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+
+
+    </body>
+</html>
