@@ -30,10 +30,10 @@ jobs:
             sudo hugo
             sudo rm /home/circleci/blogtozip/beats/public/hugo_0.49_Linux-64bit.deb
       - run:
-          command : |
-            tar -zcvf $CIRCLE_SHA1.tar.gz public/
-      - run:
          command: ls
+      - run:
+          command : |
+            tar -zcvf $CIRCLE_SHA1.tar.gz public/  
       - run:
          command: pwd
       - run:
