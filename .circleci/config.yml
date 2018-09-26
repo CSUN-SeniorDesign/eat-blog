@@ -28,15 +28,15 @@ jobs:
             cd ~/project/blogtozip
             sudo hugo new site beats
             cd ~/project/blogtozip/beats/content/post
-       - run:
+      - run:
            command: ls
-       - run:   
+      - run:   
           command: |
             sudo rm -rf *
             sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
-       - run:
+      - run:
           command: ls
-       - run:
+      - run:
           command: |
             cd ~/project/beats
             sudo hugo 
