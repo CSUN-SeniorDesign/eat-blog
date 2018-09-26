@@ -30,10 +30,10 @@ jobs:
             sudo hugo
       - run:
           command : |
+            cd ~/blogtozip/beats
             pwd
             ls
-            cd ~/blogtozip/beats
-            tar -zcvf $CIRCLE_SHA1.tar.gz ~/blogtozip/beats/public/  
+            sudo tar -zcvf $CIRCLE_SHA1.tar.gz ~/blogtozip/beats/public/  
       - run:
          command: pwd
       - run:
