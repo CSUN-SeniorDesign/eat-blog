@@ -1,8 +1,53 @@
 version: 2
 jobs:
   build: 
-    docker:
-      - image: circleci/python:3.6
+    machine: true
     steps:
       - checkout
-      - run: echo "Hello World."
+      - run:
+          command: pwd
+      - run:
+          command: ls
+      - run:
+          command: |
+            sudo mkdir ~/project/blogtozip
+            sudo mv -v ~/project/hugo-theme-dream-master/* ~/project/blogtozip/
+            cd ~/project/blogtozip 
+      - run:   
+          command: |
+            # This way allows you to install hugo with snapd. Takes longer but automatically updated.
+            #sudo apt-get update 
+            #sudo apt-get install -y snapd
+            #sudo snap install hugo
+            # This way allows dpkg with a .deb release (will have to be manually updated)
+            sudo wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
+            sudo apt-get install dpkg
+            sudo dpkg -i hugo_0.49_Linux-64bit.deb
+      - run:   
+          command: |
+            cd ~/project/blogtozip
+            sudo hugo new site beats
+            sudo mv -v ~/project/blogtozip ~/
+            sudo mkdir ~/blogtozip/beats/content/post
+      - run:
+           command: ls
+      - run:   
+          command: |
+            cd ~/project/
+            sudo mv -v * ~/blogtozip/beats/content/post
+      - run:
+          command: ls
+      - run:
+          command: |
+            cd ~/blogtozip/beats
+            sudo hugo 
+      - run:
+          command : |
+            zip -r zipfile.zip ~/blogtozip/beats/public
+      - run:
+         command: ls
+      - run:
+         command: pwd
+            
+            
+            
