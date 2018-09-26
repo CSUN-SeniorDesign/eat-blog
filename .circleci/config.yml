@@ -34,9 +34,9 @@ jobs:
           command: |
             sudo rm -rf *
             sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
-      - run:
+       - run:
           command: ls
-      - run:
+       - run:
           command: |
             cd ~/project/beats
             sudo hugo 
