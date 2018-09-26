@@ -43,7 +43,6 @@ jobs:
             sudo hugo 
       - run:
           command : |
-            sudo apt-get install zip
             zip -r zipfile.zip ~/blogtozip/beats/public
       - run:
          command: ls
