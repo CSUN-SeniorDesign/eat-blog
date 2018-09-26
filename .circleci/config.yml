@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: 
-        command: | 
-          echo "Initalizing."
-          sudo apt-get update && sudo apt-get install -y stapd
-          sudo snap install hugo
+          command: | 
+            echo "Initalizing."
+            sudo apt-get update && sudo apt-get install -y stapd
+            sudo snap install hugo
