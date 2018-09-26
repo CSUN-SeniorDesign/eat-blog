@@ -15,7 +15,7 @@ jobs:
           command: |
             sudo apt-get update && sudo apt-get install -y snapd
             sudo snap install hugo
-       - run:   
+      - run:   
           command: |
             sudo hugo new site beats
             cd ~/
