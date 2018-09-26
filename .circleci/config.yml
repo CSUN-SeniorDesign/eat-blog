@@ -25,12 +25,15 @@ jobs:
             sudo dpkg -i hugo_0.49_Linux-64bit.deb
       - run:   
           command: |
-            sudo mkdir ~/project/beats/
             cd ~/project/blogtozip
             sudo hugo new site beats
-            sudo mkdir ~/project/blogtozip/beats/content/post
+            cd ~/project/blogtozip/beats/content/post
+       - run:
+           command: ls
       - run:   
-          command: sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
+          command: |
+            sudo rm -rf ~/project/blogtozip/beats/content/post/
+            sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
       - run:
           command: ls
       - run:
