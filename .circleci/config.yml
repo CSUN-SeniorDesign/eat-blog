@@ -21,24 +21,16 @@ jobs:
           command: |
             cd ~/blogtozip
             sudo hugo new site beats
-            sudo mv -v ~/project/hugo-theme-dream-master/ ~/blogtozip/beats/themes
-            sudo cp ~/blogtozip/beats/themes/hugo-theme-dream-master/theme.toml ~/blogtozip/beats/config.toml
-            
-            sudo mv -v ~/project/blogtozip ~/
-            sudo mkdir ~/blogtozip/beats/content/post
-      - run:
-           command: ls
+            sudo mv -v ~/project/hugo-theme-dream-master/ ~/blogtozip/beats/themes/
+            sudo mv ~/project/config.toml ~/blogtozip/beats/config.toml
+            sudo mv -v /home/circleci/project/* /home/circleci/blogtozip/beats/content
       - run:   
           command: |
-            cd ~/project/
-            sudo mv -v * ~/blogtozip/beats/content/post
-      - run:
-          command: |
             cd ~/blogtozip/beats
-            sudo hugo 
+            sudo hugo
       - run:
           command : |
-            tar -zcvf $CIRCLE_SHA1.tar.gz ~/blogtozip/beats/public
+            tar -zcvf $CIRCLE_SHA1.tar.gz ~/project/blogtozip/beats/public
       - run:
          command: ls
       - run:
