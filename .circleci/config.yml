@@ -21,6 +21,7 @@ jobs:
             #sudo snap install hugo
             # This way allows dkpg with a .deb release (will have to be manually updated)
             sudo wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
+            sudo apt-get install dkpg
             sudo dkpg hugo_0.49_Linux-64bit.deb
       - run:   
           command: |
