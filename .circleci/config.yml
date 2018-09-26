@@ -33,6 +33,7 @@ jobs:
             cd ~/blogtozip/beats
             pwd
             ls
+            sudo rm public/hugo_0.49_Linux-64bit.deb
             sudo tar -zcvf $CIRCLE_SHA1.tar.gz public/  
       - run:
          command: sudo pip install awscli
