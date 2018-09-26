@@ -8,7 +8,8 @@ jobs:
           command:   
           command: | 
             sudo mkdir ~/blogtozip
-            sudo mv -v ~/eat-blog/hugo-theme-dream-master/* ~/blogtozip/
+            cd ~/eat-blog/
+            sudo mv -v ~/eat-blog/hugo-theme-dream-master ~/blogtozip/
             cd blogtozip            
             sudo apt-get update && sudo apt-get install -y snapd
             sudo snap install hugo
