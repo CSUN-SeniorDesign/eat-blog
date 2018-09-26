@@ -6,17 +6,19 @@ jobs:
       - checkout
       - run:
           command: ls
+      - run:
+          command: |
+            sudo mkdir ~/blogtozip
+            mv -v ~/hugo-theme-dream-master/* ~/blogtozip
+            cd ~/blogtozip 
       - run:   
           command: |
-            sudo mkdir ~/blogtozip   
-            cd ~/eat-blog/
-            sudo mv -v ~/eat-blog/hugo-theme-dream-master ~/blogtozip/
-            cd blogtozip            
             sudo apt-get update && sudo apt-get install -y snapd
             sudo snap install hugo
+       - run:   
+          command: |
             sudo hugo new site beats
-            cd ../
-            cd eat-blog
-            mv * ../blogtozip/content/post
+            cd ~/
+            mv Week*/* ~/blogtozip/content/post
             
             
