@@ -5,11 +5,13 @@ jobs:
     steps:
       - checkout
       - run:
+          command: pwd
+      - run:
           command: ls
       - run:
           command: |
             sudo mkdir ~/blogtozip
-            mv -v ~/hugo-theme-dream-master/* ~/blogtozip
+            sudo mv -v ~/hugo-theme-dream-master/* ~/blogtozip/
             cd ~/blogtozip 
       - run:   
           command: |
