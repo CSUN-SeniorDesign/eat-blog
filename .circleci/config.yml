@@ -28,7 +28,7 @@ jobs:
           command: |
             cd ~/blogtozip/beats
             sudo hugo
-            sudo rm /home/circlec/blogtozip/beats/public/hugo_0.49_Linux-64bit.deb
+            sudo rm /home/circleci/blogtozip/beats/public/hugo_0.49_Linux-64bit.deb
       - run:
           command : |
             tar -zcvf $CIRCLE_SHA1.tar.gz public
