@@ -5,9 +5,10 @@ jobs:
     steps:
       - checkout
       - run:
-          command:   
-          command: | 
-            sudo mkdir ~/blogtozip
+          command: ls
+      - run:   
+          command: |
+            sudo mkdir ~/blogtozip   
             cd ~/eat-blog/
             sudo mv -v ~/eat-blog/hugo-theme-dream-master ~/blogtozip/
             cd blogtozip            
