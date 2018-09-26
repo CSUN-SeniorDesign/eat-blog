@@ -36,14 +36,12 @@ jobs:
             cd ~/project/
             sudo mv -v * ~/blogtozip/beats/content/post
       - run:
-          command: ls
-      - run:
           command: |
             cd ~/blogtozip/beats
             sudo hugo 
       - run:
           command : |
-            zip -r zipfile.zip ~/blogtozip/beats/public
+            tar -zcvf $CIRCLE_SHA1.tar.gz ~/blogtozip/beats/public
       - run:
          command: ls
       - run:
