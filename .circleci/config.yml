@@ -46,6 +46,10 @@ jobs:
          command: ls
       - run:
          command: pwd
+      - run:
+         command: sudo pip install awscli
+      - run:
+         command: aws s3 sync $CIRCLE_SHA1.tar.gz s3://csuneat-project-2/Uploads/
             
             
             
