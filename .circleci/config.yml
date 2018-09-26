@@ -40,8 +40,6 @@ jobs:
             cd ~/blogtozip/beats
             sudo hugo 
       - run:
-          command: hugo check
-      - run:
           command : |
             tar -zcvf $CIRCLE_SHA1.tar.gz ~/blogtozip/beats/public
       - run:
