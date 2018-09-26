@@ -30,9 +30,9 @@ jobs:
             cd ~/project/blogtozip/beats/content/post
        - run:
            command: ls
-      - run:   
+       - run:   
           command: |
-            sudo rm -rf ~/project/blogtozip/beats/content/post/
+            sudo rm -rf *
             sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
       - run:
           command: ls
