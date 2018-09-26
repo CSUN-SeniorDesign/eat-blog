@@ -28,7 +28,8 @@ jobs:
           command: |
             cd ~/blogtozip/beats
             sudo hugo
-            sudo rm /home/circleci/blogtozip/beats/public/hugo_0.49_Linux-64bit.deb
+      - run:
+         command: pwd
       - run:
          command: ls
       - run:
