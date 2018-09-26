@@ -27,17 +27,19 @@ jobs:
           command: |
             cd ~/project/blogtozip
             sudo hugo new site beats
-            sudo mkdir ~/project/blogtozip/beats/content/post
+            sudo mv -v ~/project/blogtozip ~/
+            sudo mkdir ~/blogtozip/beats/content/post
       - run:
            command: ls
       - run:   
           command: |
-            sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
+            cd ~/project/
+            sudo mv -v * ~/blogtozip/beats/content/post
       - run:
           command: ls
       - run:
           command: |
-            cd ~/project/beats
+            cd ~/blogtozip/beats
             sudo hugo 
             
             
