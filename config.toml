@@ -1,0 +1,4 @@
+baseURL = "https://www.fa480.club"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "hugo-theme-dream"

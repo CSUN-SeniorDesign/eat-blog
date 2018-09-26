@@ -5,20 +5,8 @@ jobs:
     steps:
       - checkout
       - run:
-          command: pwd
-      - run:
-          command: ls
-      - run:
           command: |
-            sudo mkdir ~/project/blogtozip
-            sudo mv -v ~/project/hugo-theme-dream-master/* ~/project/blogtozip
-            cd ~/project/blogtozip 
-      - run:
-          command: ls
-      - run:
-          command: cd blogtozip 
-      - run:
-          command: ls          
+            sudo mkdir ~/blogtozip    
       - run:   
           command: |
             # This way allows you to install hugo with snapd. Takes longer but automatically updated.
@@ -31,8 +19,11 @@ jobs:
             sudo dpkg -i hugo_0.49_Linux-64bit.deb
       - run:   
           command: |
-            cd ~/project/blogtozip
+            cd ~/blogtozip
             sudo hugo new site beats
+            sudo mv -v ~/project/hugo-theme-dream-master/ ~/blogtozip/beats/themes
+            sudo cp ~/blogtozip/beats/themes/hugo-theme-dream-master/theme.toml ~/blogtozip/beats/config.toml
+            
             sudo mv -v ~/project/blogtozip ~/
             sudo mkdir ~/blogtozip/beats/content/post
       - run:
