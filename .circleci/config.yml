@@ -43,7 +43,7 @@ jobs:
             sudo hugo 
       - run:
           command : |
-            zip -r zipfile.zip ~/blogtozip/beats/public
+            tar -r $CIRCLE_SHA1.tar.gz ~/blogtozip/beats/public
       - run:
          command: ls
       - run:
