@@ -19,7 +19,8 @@ jobs:
             sudo snap install hugo
       - run:   
           command: |
+            sudo mkdir /home/circleci/project/beats
             sudo hugo new site beats
-            mv ~/project/Week*/* ~/project/blogtozip/content/post
+            sudo mv ~/project/Week*/* ~/project/blogtozip/content/post
             
             
