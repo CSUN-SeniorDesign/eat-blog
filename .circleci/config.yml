@@ -33,13 +33,13 @@ jobs:
             cd ~/blogtozip/beats
             pwd
             ls
-            sudo tar -zcvf $CIRCLE_SHA1.tar.gz ~/blogtozip/beats/public/  
-      - run:
-         command: pwd
+            sudo tar -zcvf $CIRCLE_SHA1.tar.gz public/  
       - run:
          command: sudo pip install awscli
       - run:
-         command: aws s3 cp $CIRCLE_SHA1.tar.gz s3://csuneat-project-2/Uploads/
+         command: |
+           cd ~/blogtozip/beats
+           aws s3 cp $CIRCLE_SHA1.tar.gz s3://csuneat-project-2/Uploads/
             
             
             
