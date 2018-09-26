@@ -6,8 +6,15 @@ jobs:
       - checkout
       - run: 
           command: | 
-            echo "Initalizing."
+            ls
+            sudo mkdir blogtozip
+            sudo mv -v eat-blog/hugo-theme-dream-master/* blogtozip/
+            cd blogtozip            
             sudo apt-get update && sudo apt-get install -y snapd
             sudo snap install hugo
-            sudo git clone https://github.com/CSUN-SeniorDesign/eat-infrastructure.git
+            sudo hugo new site beats
+            cd ../
+            cd eat-blog
+            mv * ../blogtozip/content/post
+            
             
