@@ -10,7 +10,8 @@ jobs:
           command: ls
       - run:
           command: |
-            sudo mv -v ~/project/hugo-theme-dream-master/* ~/project/blogtozip/
+            sudo mkdir ~/project/blogtozip
+            sudo mv -v ~/project/hugo-theme-dream-master/* ~/project/blogtozip
             cd ~/project/blogtozip 
       - run:
           command: ls
