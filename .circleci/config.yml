@@ -28,10 +28,9 @@ jobs:
             sudo mkdir ~/project/beats/
             cd ~/project/blogtozip
             sudo hugo new site beats
-      - run:   
-          command: |
             sudo mkdir ~/project/blogtozip/beats/content/post
-            sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
+      - run:   
+          command: sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
       - run:
           command: ls
       - run:
