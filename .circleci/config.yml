@@ -15,6 +15,10 @@ jobs:
             cd ~/project/blogtozip 
       - run:
           command: ls
+      - run:
+          command: cd blogtozip 
+      - run:
+          command: ls          
       - run:   
           command: |
             # This way allows you to install hugo with snapd. Takes longer but automatically updated.
