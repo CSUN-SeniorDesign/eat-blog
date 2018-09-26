@@ -5,7 +5,8 @@ jobs:
       - image: circleci/python:3.6
   steps:
     - checkout
-    - run: echo "Initalizing."
-    - run: sudo apt-get update
-    - run: sudo apt-get install -y stapd
-    - run: sudo snap install hugo
+    - run: 
+      command: | 
+        echo "Initalizing."
+        sudo apt-get update && sudo apt-get install -y stapd
+        sudo snap install hugo
