@@ -9,3 +9,5 @@ jobs:
             echo "Initalizing."
             sudo apt-get update && sudo apt-get install -y snapd
             sudo snap install hugo
+            sudo git clone https://github.com/CSUN-SeniorDesign/eat-infrastructure.git
+            
