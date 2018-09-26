@@ -31,7 +31,7 @@ jobs:
       - run:   
           command: |
             sudo mkdir ~/project/blogtozip/beats/content/post
-            sudo mv ~/project/Week*/* ~/project/blogtozip/beats/content/post
+            sudo mv -v ~/project/Week*/* ~/project/blogtozip/beats/content/post
       - run:
           command: ls
       - run:
