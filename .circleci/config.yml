@@ -5,10 +5,10 @@ jobs:
     steps:
       - checkout
       - run:
-          command: ls      
+          command:   
           command: | 
-            sudo mkdir blogtozip
-            sudo mv -v eat-blog/hugo-theme-dream-master/* blogtozip/
+            sudo mkdir ~/blogtozip
+            sudo mv -v ~/eat-blog/hugo-theme-dream-master/* ~/blogtozip/
             cd blogtozip            
             sudo apt-get update && sudo apt-get install -y snapd
             sudo snap install hugo
