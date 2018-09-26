@@ -15,12 +15,17 @@ jobs:
             cd ~/project/blogtozip 
       - run:   
           command: |
-            sudo apt-get update 
-            sudo apt-get install -y snapd
-            sudo snap install hugo
+            # This way allows you to install hugo with snapd
+            #sudo apt-get update 
+            #sudo apt-get install -y snapd
+            #sudo snap install hugo
+            # This way allows dkpg with a .deb release (will have to be manually updated)
+            sudo wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
+            sudo dkpg hugo_0.49_Linux-64bit.deb
       - run:   
           command: |
-            sudo mkdir /home/circleci/project/beats
+            sudo mkdir /home/circleci/project/beats/
+            cd ~/project/blogtozip
             sudo hugo new site beats
             sudo mkdir ~/project/blogtozip/content/post
             sudo mv ~/project/Week*/* ~/project/blogtozip/content/post
