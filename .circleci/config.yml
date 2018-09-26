@@ -15,7 +15,7 @@ jobs:
             cd ~/project/blogtozip 
       - run:   
           command: |
-            # This way allows you to install hugo with snapd. Takes longer but manually updated.
+            # This way allows you to install hugo with snapd. Takes longer but automatically updated.
             #sudo apt-get update 
             #sudo apt-get install -y snapd
             #sudo snap install hugo
