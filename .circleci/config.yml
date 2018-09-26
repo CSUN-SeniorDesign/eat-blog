@@ -27,7 +27,7 @@ jobs:
           command: |
             cd ~/project/blogtozip
             sudo hugo new site beats
-            mkdir ~/project/blogtozip/beats/content/post
+            sudo mkdir ~/project/blogtozip/beats/content/post
       - run:
            command: ls
       - run:   
