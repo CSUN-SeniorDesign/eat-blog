@@ -10,9 +10,9 @@ jobs:
           command: ls
       - run:
           command: |
-            sudo mkdir ~/blogtozip
-            sudo mv -v ~/hugo-theme-dream-master/* ~/blogtozip/
-            cd ~/blogtozip 
+            sudo mkdir ~/project/blogtozip
+            sudo mv -v ~/project/hugo-theme-dream-master/* ~/project/blogtozip/
+            cd ~/project/blogtozip 
       - run:   
           command: |
             sudo apt-get update && sudo apt-get install -y snapd
@@ -20,7 +20,6 @@ jobs:
       - run:   
           command: |
             sudo hugo new site beats
-            cd ~/
-            mv Week*/* ~/blogtozip/content/post
+            mv ~/project/Week*/* ~/project/blogtozip/content/post
             
             
