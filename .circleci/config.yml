@@ -4,9 +4,9 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: 
+      - run:
+          command: ls      
           command: | 
-            ls
             sudo mkdir blogtozip
             sudo mv -v eat-blog/hugo-theme-dream-master/* blogtozip/
             cd blogtozip            
