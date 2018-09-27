@@ -1,7 +1,7 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
-name = "BEATS Team"
+name = "Dream"
 license = "MIT"
 licenselink = "https://github.com/g1eny0ung/hugo-theme-dream/blob/master/LICENSE"
 description = "A hugo theme named dream"
@@ -11,11 +11,11 @@ features = ["flip", "colorful", "i18n", "blog", "disqus", "google-analytics", "r
 min_version = "0.36"
 
 [author]
-  name = "Beats team"
-  homepage = "https://github.com/"
+  name = "Yue Yang"
+  homepage = "https://github.com/g1eny0ung"
 
 # If porting an existing theme
 [original]
-  name = "Beat's blog"
+  name = "g1eny0ung's blog"
   homepage = "https://g1eny0ung.github.io"
   repo = "https://github.com/g1eny0ung/blog"

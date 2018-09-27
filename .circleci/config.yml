@@ -5,14 +5,8 @@ jobs:
     steps:
       - checkout
       - run:
-          command: pwd
-      - run:
-          command: ls
-      - run:
           command: |
-            sudo mkdir ~/project/blogtozip
-            sudo mv -v ~/project/hugo-theme-dream-master/* ~/project/blogtozip/
-            cd ~/project/blogtozip 
+            sudo mkdir ~/blogtozip    
       - run:   
           command: |
             # This way allows you to install hugo with snapd. Takes longer but automatically updated.
@@ -25,27 +19,28 @@ jobs:
             sudo dpkg -i hugo_0.49_Linux-64bit.deb
       - run:   
           command: |
-            cd ~/project/blogtozip
+            cd ~/blogtozip
             sudo hugo new site beats
-            sudo mv -v ~/project/blogtozip ~/
-            sudo mkdir ~/blogtozip/beats/content/post
-      - run:
-           command: ls
+            sudo mv -v ~/project/hugo-theme-dream-master/ ~/blogtozip/beats/themes/
+            sudo mv ~/project/config.toml ~/blogtozip/beats/config.toml
+            sudo mv -v /home/circleci/project/* /home/circleci/blogtozip/beats/content
       - run:   
           command: |
-            cd ~/project/
-            sudo mv -v * ~/blogtozip/beats/content/post
-      - run:
-          command: |
             cd ~/blogtozip/beats
-            sudo hugo 
+            sudo hugo
       - run:
           command : |
-            tar -zcvf $CIRCLE_SHA1.tar.gz ~/blogtozip/beats/public
+            cd ~/blogtozip/beats
+            pwd
+            ls
+            sudo rm public/hugo_0.49_Linux-64bit.deb
+            sudo tar -zcvf $CIRCLE_SHA1.tar.gz public/  
       - run:
-         command: ls
+         command: sudo pip install awscli
       - run:
-         command: pwd
+         command: |
+           cd ~/blogtozip/beats
+           aws s3 cp $CIRCLE_SHA1.tar.gz s3://csuneat-project-2/Uploads/
             
             
             
