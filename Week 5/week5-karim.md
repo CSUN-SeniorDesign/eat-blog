@@ -1,3 +1,8 @@
++++
+title = "Shahid's Blog. Week 5"
+date = "2018-09-28"
++++
+
 ## Shahid's Blog. Week 5
 #### What's new this week?
 
