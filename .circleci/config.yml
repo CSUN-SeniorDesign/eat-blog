@@ -10,9 +10,9 @@ jobs:
       - run:   
           command: |
             # This way allows you to install hugo with snapd. Takes longer but automatically updated.
-            #sudo apt-get update 
-            #sudo apt-get install -y snapd
-            #sudo snap install hugo
+            # sudo apt-get update 
+            # sudo apt-get install -y snapd
+            # sudo snap install hugo
             # This way allows dpkg with a .deb release (will have to be manually updated)
             sudo wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
             sudo apt-get install dpkg

@@ -1,2 +1,2 @@
 #A file name should be placed in here for the current production site, eg:
-11b45148dc491162e6e1cb3987858085595e5bf1.tar.gz
+abcdefg.tar.gz
