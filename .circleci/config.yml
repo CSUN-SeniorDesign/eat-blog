@@ -22,7 +22,9 @@ jobs:
             cd ~/blogtozip
             sudo hugo new site beats
             sudo mv -v ~/project/hugo-theme-dream-master/ ~/blogtozip/beats/themes/
-            sudo mv ~/project/config.toml ~/blogtozip/beats/config.toml
+            sudo mv ~/project/config.toml ~/blogtozip/beats/config.toml            
+            aws s3 cp /home/circleci/project/ProductionSite.txt s3://csuneat-project-2-/Uploads/
+            sudo rm /home/circleci/project/ProductionSite.txt
             sudo mv -v /home/circleci/project/* /home/circleci/blogtozip/beats/content
       - run:   
           command: |
