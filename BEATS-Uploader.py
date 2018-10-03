@@ -24,7 +24,7 @@ def programStartup():
 '''
 Main Method
 Primary output for the program.
-Will only run if a user says their AWS credentials are configured, to save them time.
+Will only run if a user says they have git installed, to save them time.
 '''
 def mainMethod():
     if programStartup() == "Y":
