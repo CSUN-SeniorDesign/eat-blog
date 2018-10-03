@@ -13,7 +13,7 @@ ______            _         _   _       _                 _
 
 '''
 Program Startup.
-Informs user that Git and AWS CLI are required.
+Informs user that Git is required.
 '''
 def programStartup():
     print("This program requires git.")
