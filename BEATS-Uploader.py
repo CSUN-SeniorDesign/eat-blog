@@ -100,18 +100,16 @@ This method will create a new branch, checkout the branch, add the new txt file,
 '''
 def doGIT():
         cleaned_directory = getCurrentDir()
-        txt_location = cleaned_directory+"/eat-blog/ProductionSite.txt"
-        git_location = "--git-dir="+cleaned_directory+"/eat-blog/.git"
-
+    
         try:
             #Branching, checking out, adding the new file, committing, then pushing.
-            subprocess.call(["git", git_location, "branch", "Script-Update-ProductionSite" ])
-            subprocess.call(["git", git_location, "checkout", "Script-Update-ProductionSite" ])
-            subprocess.call(["git", git_location, "add", txt_location ])
-            subprocess.call(["git", git_location, "commit", "-m", "\"BEATS Uploader - Update ProductionSite.txt\"" ])
+            subprocess.call(["git","-C", "eat-blog", "branch", "Script-Update-ProductionSite" ])
+            subprocess.call(["git","-C", "eat-blog", "checkout", "Script-Update-ProductionSite" ])
+            subprocess.call(["git","-C", "eat-blog", "add", "ProductionSite.txt" ])
+            subprocess.call(["git","-C", "eat-blog", "commit", "-m", "\"BEATS Uploader - Update ProductionSite.txt\"" ])
             print("\n\n\nEnter your GitHub username and password. \nNote this script doesn't see what you type.")
             print("Alternatively, CTRL+C to exit, then run git push on your own in the eat-blog directory.\n")
-            subprocess.call(["git", git_location, "push", "origin", "Script-Update-ProductionSite"])
+            subprocess.call(["git","-C", "eat-blog", "push", "origin", "Script-Update-ProductionSite"])
         except:
             print("\n\nError pushing to GitHub. Ensure the previous \"Script-Update-ProductionSite\" branch was deleted if this script was used before.")
 
