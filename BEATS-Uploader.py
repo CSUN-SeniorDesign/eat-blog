@@ -100,12 +100,7 @@ This method will create a new branch, checkout the branch, add the new txt file,
 '''
 def doGIT():
         cleaned_directory = getCurrentDir()
-        txt_location = cleaned_directory+"/eat-blog/ProductionSite.txt"
-        git_location = cleaned_directory+"/eat-blog"
-
-        print("Txt location: " + str(txt_location))
-        print("Git Location: " + str(git_location))
-
+    
         try:
             #Branching, checking out, adding the new file, committing, then pushing.
             subprocess.call(["git","-C", "eat-blog", "branch", "Script-Update-ProductionSite" ])
