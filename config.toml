@@ -1,11 +1,11 @@
 baseurl = "https://fa480.club"
 title = "Beats blog"
 author = "BEATS"
-paginate = 3
+paginate = 6
 theme = "arabica"
 
 [params]
-    description = "A minimal Hugo theme"
+    description = "Beat's Blog"
     replaceGoogleFonts = "fonts.loli.net"
     twitter = "example"
     facebook = "example"
