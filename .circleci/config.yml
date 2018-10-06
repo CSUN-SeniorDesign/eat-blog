@@ -26,7 +26,7 @@ jobs:
             sudo mv ~/project/config.toml ~/blogtozip/beats/config.toml            
             aws s3 cp /home/circleci/project/ProductionSite.txt s3://csuneat-project-2/
             sudo rm /home/circleci/project/ProductionSite.txt
-            sudo mv -v /home/circleci/project/* /home/circleci/blogtozip/beats/content
+            sudo mv -v /home/circleci/project/* /home/circleci/blogtozip/beats/content/post/
       - run:   
           command: |
             cd ~/blogtozip/beats
