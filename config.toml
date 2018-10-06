@@ -1,32 +1,11 @@
-baseURL = "https://www.fa480.club"
-languageCode = "en-us"
-theme = "hugo-theme-dream-master"
-defaultContentLanguage = "en"
-title = "Beats Site"
-
-# copyright = ""
-
-# googleAnalytics = ""
-
-# disqusShortname = ""
-
-# enableRobotsTXT = true
+baseurl = "https://fa480.club"
+title = "Beats blog"
+author = "BEATS"
+paginate = 3
+theme = "arabica"
 
 [params]
-  author = "BEATS"
-  motto = "YOLO"
-  # description = ""
-  # avatar = ""
-  
-  # email = ""
-  # github = ""
-  # linkedin = ""
-  # codepen = ""
-  # stackoverflow = ""
-
-  siteStartYear = 2016
-  aboutHeader = "AboutMe"
-
-  paginate = 4
-
-# favicon = "/favicon.ico"
+    description = "A minimal Hugo theme"
+    replaceGoogleFonts = "fonts.loli.net"
+    twitter = "example"
+    facebook = "example"
