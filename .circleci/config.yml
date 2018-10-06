@@ -36,9 +36,9 @@ jobs:
             cd ~/blogtozip/beats
             pwd
             ls
-            sudo rm public/hugo_0.49_Linux-64bit.deb
-            sudo rm public/BEATS-Uploader.py
-            sudo rm public/S3-Fetch.py
+            sudo rm public/post/hugo_0.49_Linux-64bit.deb
+            sudo rm public/post/BEATS-Uploader.py
+            sudo rm public/post/S3-Fetch.py
             sudo tar -zcvf $CIRCLE_SHA1.tar.gz public/  
       - run:
          command: sudo pip install awscli
