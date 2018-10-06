@@ -67,12 +67,14 @@ def replaceTar(site_type):
 
     if site_type == "Staging":
         subprocess.call("rm -rf /var/www/staging", shell=True)
+        subprocess.call("mkdir /var/www/staging", shell=True)
         subprocess.call("mv "+directory+"/public/* /var/www/staging", shell=True)
     else:
         subprocess.call("rm -rf /var/www/html", shell=True)
+        subprocess.call("mkdir /var/www/html", shell=True)
         subprocess.call("mv "+directory+"/public/* /var/www/html", shell=True)
+        
     subprocess.call("service apache2 restart", shell=True)
-    subprocess.call("reboot",shell=True)
 
 def main(type):
     print("Fetching from S3.")
