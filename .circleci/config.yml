@@ -5,7 +5,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: |
+          command : |
             sudo mkdir ~/blogtozip    
       - run:   
           command: |
@@ -42,6 +42,12 @@ jobs:
             sudo tar -zcvf $CIRCLE_SHA1.tar.gz public/  
       - run:
          command: sudo pip install awscli
+      - run:
+         command: |
+           touch StagingSite.txt
+           echo $CIRCLE_SHA1 > StagingSite.txt
+           aws s3 cp StagingSite.txt s3://csuneat-project-2
+           aws s3 cp StagingSite.txt s3://csuneat-project-2
       - run:
          command: |
            cd ~/blogtozip/beats
