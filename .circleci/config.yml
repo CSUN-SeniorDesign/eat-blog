@@ -4,54 +4,30 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run:
-          command : |
-            sudo mkdir ~/blogtozip    
       - run:   
           command: |
-            # This way allows you to install hugo with snapd. Takes longer but automatically updated.
-            # sudo apt-get update 
-            # sudo apt-get install -y snapd
-            # sudo snap install hugo
-            # This way allows dpkg with a .deb release (will have to be manually updated)
-            sudo wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
-            sudo apt-get install dpkg
-            sudo dpkg -i hugo_0.49_Linux-64bit.deb
+            # Get docker here.
       - run:   
           command: |
-            cd ~/blogtozip
-            sudo hugo new site beats
-            sudo mv -v ~/project/arabica/ ~/blogtozip/beats/themes/
-            sudo mv -v ~/blogtozip/beats/themes/arabica/exampleSite/* ~/blogtozip/beats
-            sudo mv ~/project/config.toml ~/blogtozip/beats/config.toml            
+            # This uploads the ProductionSite.txt to s3.
+            sudo pip install awscli        
             aws s3 cp /home/circleci/project/ProductionSite.txt s3://csuneat-project-2/
             sudo rm /home/circleci/project/ProductionSite.txt
-            sudo mv -v /home/circleci/project/* /home/circleci/blogtozip/beats/content/post/
       - run:   
           command: |
-            cd ~/blogtozip/beats
-            sudo hugo
+            # Adding Staging Site to s3.
+            touch StagingSite.txt
+            echo $CIRCLE_SHA1 > StagingSite.txt
+            aws s3 cp StagingSite.txt s3://csuneat-project-2
       - run:
           command : |
-            cd ~/blogtozip/beats
-            pwd
-            ls
-            sudo rm public/post/hugo_0.49_Linux-64bit.deb
-            sudo rm public/post/BEATS-Uploader.py
-            sudo rm public/post/S3-Fetch.py
-            sudo tar -zcvf $CIRCLE_SHA1.tar.gz public/  
-      - run:
-         command: sudo pip install awscli
+            # Run docker commands here to create the image
       - run:
          command: |
-           touch StagingSite.txt
-           echo $CIRCLE_SHA1 > StagingSite.txt
-           aws s3 cp StagingSite.txt s3://csuneat-project-2
-           aws s3 cp StagingSite.txt s3://csuneat-project-2
+           # Add $CIRCLE_SHA1 as a tag to docker image here.
       - run:
          command: |
-           cd ~/blogtozip/beats
-           aws s3 cp $CIRCLE_SHA1.tar.gz s3://csuneat-project-2/Uploads/
+           # Upload image to ECR here.
             
             
             
