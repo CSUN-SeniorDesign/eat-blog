@@ -10,8 +10,7 @@ jobs:
       - run:   
           command: |
             # This uploads the ProductionSite.txt to s3.
-            sudo pip install awscli
-            cd ~/blogtozip         
+            sudo pip install awscli        
             aws s3 cp /home/circleci/project/ProductionSite.txt s3://csuneat-project-2/
             sudo rm /home/circleci/project/ProductionSite.txt
       - run:   
