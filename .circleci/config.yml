@@ -6,14 +6,9 @@ jobs:
       - checkout
       - run:   
           command: |
-            # Setting up docker here.
+            # Get docker here.
             cd fa480.club-dockerfile/
             docker build --rm=true -t fa480.club-base .
-            cd ..
-            cd production-site-dockerfile
-            docker build --rm=true -t production-site .
-            docker tag site:$CIRCLE_SHA1
-            ls
       - run:   
           command: |
             # This uploads the ProductionSite.txt to s3.
@@ -27,9 +22,14 @@ jobs:
             echo $CIRCLE_SHA1 > StagingSite.txt
             aws s3 cp StagingSite.txt s3://csuneat-project-2
       - run:
+          command : |
+            # Run docker commands here to create the image
+      - run:
+         command: |
+           # Add $CIRCLE_SHA1 as a tag to docker image here.
+      - run:
          command: |
            # Upload image to ECR here.
-           aws ecr put-image --repository-name beats-repo --image-tag site:$CIFRCLE_SHA1 
             
             
             
