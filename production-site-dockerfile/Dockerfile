@@ -53,6 +53,7 @@ RUN echo "Header set X-Private-IP %{serverip}e" >> /etc/apache2/apache2.conf
 
 # Move the script from the host to the image that installs datadog.
 COPY datadog.sh /home/datadog.sh
+RUN chmod 777 /home/datadog.sh
 
 # Link datadog to the image for monitoring.
 RUN ./home/datadog.sh
