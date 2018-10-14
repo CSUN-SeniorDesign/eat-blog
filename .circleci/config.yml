@@ -8,19 +8,12 @@ jobs:
           command: |
             # Setting up docker here.
             cd fa480.club-dockerfile/
-            # Build 1
-            echo "build one"
             docker build --rm=true -t fa480.club-base .
             cd ..
-            cd production-site-dockerfile/
-            # Build 2
-            echo "build two"
+            cd production-site-dockerfile
             docker build --rm=true -t production-site .
-            # Tagging
-            echo "tagging"
             docker tag site:$CIRCLE_SHA1
             ls
-            cd ..
       - run:   
           command: |
             # This uploads the ProductionSite.txt to s3.
