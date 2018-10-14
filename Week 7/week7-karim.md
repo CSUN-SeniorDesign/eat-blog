@@ -67,6 +67,8 @@
 
   ```
   docker build -t docker-test -t 1.0 ~/Desktop/docker-test
+
+  docker build --rm=true -t production-site .
   ```
 
 12. Exporting the created docker image
@@ -98,11 +100,21 @@
   docker run -it ubuntu:14.04.5
   ```
 
-15. Stopping all docker images
+15. Stopping all docker containers
   ```
   docker stop $(docker ps -aq)
   ```
 
+16. Removing all docker containers
+  ```
+  docker rm $(docker ps -aq)
+  ```
+
+17 Removing all docker images
+  ```
+  docker rmi $(docker images -q)
+  ```
+  
 ##### Creating a Dockerfile
 1. First start by creating a new directory for the Dockerfile.
 
@@ -126,3 +138,15 @@
   ```
   COPY datadog.sh /home/datadog.sh
   ```
+
+##### Getting the IP address of the container
+1. First run the docker and keep it running
+  ```
+  docker run -t -d production-site
+  ```
+2. Then Run the ```exec``` command to get the IP address
+  ```
+  docker exec [image-id from step 1] cat /etc/hosts
+  ```
+3. The very bottom result will give you the ip address to put into your internet browser to test
+  the apache2 website.
