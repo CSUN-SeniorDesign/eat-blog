@@ -3,13 +3,12 @@ jobs:
   build: 
     machine: true
     steps:
-      - setup_remote_docker
       - checkout
       - run:   
           command: |
             # Get docker here.
-            sudo apt-get install docker
-            sudo apt-get install docker.io
+            cd fa480.club-dockerfile/
+            docker build --rm=true -t fa480.club-base
       - run:   
           command: |
             # This uploads the ProductionSite.txt to s3.
