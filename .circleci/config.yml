@@ -8,7 +8,7 @@ jobs:
           command: |
             # Get docker here.
             cd fa480.club-dockerfile/
-            docker build --rm=true -t fa480.club-base .
+            docker build --rm=true -t fa480.club-base
       - run:   
           command: |
             # This uploads the ProductionSite.txt to s3.
