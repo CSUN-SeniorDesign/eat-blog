@@ -55,6 +55,6 @@ RUN echo "Header set X-Private-IP %{serverip}e" >> /etc/apache2/apache2.conf
 COPY datadog.sh /home/datadog.sh
 
 # Link datadog to the image for monitoring.
-#RUN ./home/datadog.sh
+RUN ./home/datadog.sh
 
 CMD service apache2 start && tail -f /dev/null
