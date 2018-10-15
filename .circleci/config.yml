@@ -43,7 +43,13 @@ jobs:
          command: |
            # Upload image to ECR here.
            # aws ecr put-image --image-manifest V2 --repository-name beats_repo --image-tag $CIRCLE_SHA1
-           sudo docker login -u $DOCKER_USER -p $DOCKER_PASS https://507963158957.dkr.ecr.us-west-2.amazonaws.com
-           docker push 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo  
+           # sudo docker login -u $DOCKER_USER -p $DOCKER_PASS https://507963158957.dkr.ecr.us-west-2.amazonaws.com
+           # sudo docker push 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo 
+    deploy:
+      docker:
+        -image: 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo
+          aws_auth:
+            aws_acess_key_id: $AWS_ACCESS_KEY_ID
+            aws_secret_access_key: $AWS_SECRET_ACCESS_KEY
             
             
