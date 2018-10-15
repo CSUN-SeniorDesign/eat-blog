@@ -10,17 +10,14 @@ jobs:
             cd fa480.club-dockerfile/
             
             # Build 1
-            
             docker build --rm=true -t fa480.club-base .
             cd ..
             cd production-site-dockerfile/
             
             # Build 2
-            
             docker build --rm=true -t finalbuild -t 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo -t $CIRCLE_SHA1 .
             
             # Tagging
-            
             # docker tag finalbuild 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo
             # docker tag finalbuild $CIRCLE_SHA1
             cd ..
