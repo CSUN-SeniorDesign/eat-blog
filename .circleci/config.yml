@@ -19,14 +19,13 @@ jobs:
             # Build 2
             
             echo "build two"
-            docker build --rm=true -t $CIRCLE_SHA1 .
+            docker build --rm=true -t finalbuild -t 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo -t $CIRCLE_SHA1 .
             
             # Tagging
             
             echo "tagging"
-            docker tag $CIRCLE_SHA1 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo
-            docker tag $CIRCLE_SHA1 commit:$CIRCLE_SHA1
-            ls
+            # docker tag finalbuild 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo
+            # docker tag finalbuild $CIRCLE_SHA1
             cd ..
       - run:   
           command: |
@@ -44,7 +43,8 @@ jobs:
          command: |
            # Upload image to ECR here.
            # aws ecr put-image --image-manifest V2 --repository-name beats_repo --image-tag $CIRCLE_SHA1
-           sudo docker login -u $DOCKER_USER -p $DOCKER_PASS https://507963158957.dkr.ecr.us-west-2.amazonaws.com
+           # sudo docker login -u $DOCKER_USER -p $DOCKER_PASS https://507963158957.dkr.ecr.us-west-2.amazonaws.com
+           $(aws ecr get-login --no-include-email --region us-west-2) 
            sudo docker push 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo 
             
             
