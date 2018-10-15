@@ -56,6 +56,6 @@ COPY datadog.sh /home/datadog.sh
 RUN chmod 777 /home/datadog.sh
 
 # Link datadog to the image for monitoring.
-RUN ./home/datadog.sh
+RUN sudo ./home/datadog.sh
 
 CMD service apache2 start && tail -f /dev/null
