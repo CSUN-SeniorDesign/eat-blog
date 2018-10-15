@@ -15,11 +15,10 @@ jobs:
             cd production-site-dockerfile/
             
             # Build 2
-            docker build --rm=true -t finalbuild -t 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo -t $CIRCLE_SHA1 .
+            docker build --rm=true -t finalbuild .
             
             # Tagging
-            # docker tag finalbuild 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo
-            # docker tag finalbuild $CIRCLE_SHA1
+            docker tag finalbuild:latest 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo:$CIRCLE_SHA1
             cd ..
       - run:   
           command: |
