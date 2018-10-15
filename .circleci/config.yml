@@ -41,5 +41,3 @@ jobs:
            # Upload image to ECR here.
            sudo $(aws ecr get-login --no-include-email --region us-west-2) 
            sudo docker push 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo 
-            
-            
