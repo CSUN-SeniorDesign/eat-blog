@@ -19,12 +19,12 @@ jobs:
             # Build 2
             
             echo "build two"
-            docker build --rm=true -t test .
+            docker build --rm=true -t $CIRCLE_SHA1 .
             
             # Tagging
             
             echo "tagging"
-            docker tag test:latest test:507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo  
+            docker tag $CIRCLE_SHA1 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo  
             ls
             cd ..
       - run:   
