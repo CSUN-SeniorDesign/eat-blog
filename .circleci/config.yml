@@ -42,7 +42,8 @@ jobs:
       - run:
          command: |
            # Upload image to ECR here.
-           # aws ecr put-image --image-manifest V2 --repository-name beats_repo --image-tag $CIRCLE_SHA1 
+           # aws ecr put-image --image-manifest V2 --repository-name beats_repo --image-tag $CIRCLE_SHA1
+           docker login -u $DOCKER_USER -p $DOCKER_PASS
            docker push 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo  
             
             
