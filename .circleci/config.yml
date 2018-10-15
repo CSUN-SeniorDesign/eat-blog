@@ -24,7 +24,8 @@ jobs:
             # Tagging
             
             echo "tagging"
-            docker tag $CIRCLE_SHA1 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo  
+            docker tag $CIRCLE_SHA1 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo
+            docker tag $CIRCLE_SHA1 commit:$CIRCLE_SHA1
             ls
             cd ..
       - run:   
