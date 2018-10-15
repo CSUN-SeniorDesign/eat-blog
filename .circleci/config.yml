@@ -24,7 +24,7 @@ jobs:
             # Tagging
             
             echo "tagging"
-            docker tag site:$CIRCLE_SHA1
+            docker tag site:latest site:$CIRCLE_SHA1
             ls
             cd ..
       - run:   
@@ -42,7 +42,7 @@ jobs:
       - run:
          command: |
            # Upload image to ECR here.
-           aws ecr put-image --repository-name beats-repo --image-tag site:$CIFRCLE_SHA1 
+           aws ecr put-image --repository-name beats-repo --image-tag site:$CIRCLE_SHA1 
             
             
             
