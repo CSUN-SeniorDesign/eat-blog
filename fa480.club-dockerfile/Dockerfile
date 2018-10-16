@@ -6,11 +6,6 @@ FROM ubuntu:14.04.5
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # Installing minimum software to get the website running.
-RUN apt-get update
-RUN apt-get install -y apache2
-RUN apt-get install -y curl
-RUN apt-get install -y dpkg
-RUN apt-get install -y git
-RUN apt-get install -y python-pip
-RUN apt-get install -y wget
-RUN apt-get install -y rcconf && update-rc.d -f apache2 remove && update-rc.d -f apache2 defaults
+RUN apt-get update && \
+apt-get install --no-install-recommends -y apache2 curl dpkg git python-pip wget && \
+rm -rf /var/lib/apt/lists/*
