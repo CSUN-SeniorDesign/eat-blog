@@ -98,5 +98,3 @@ ssh -i /home/username/.ssh/id_rsa.pub username@ipaddress -p portnumber
 5. Pick a unused port # > 1024.
 6. Save the new port forward rule.
 7. (Optional) While logged in, create rules for port forwarding for http and https.
-
-s
