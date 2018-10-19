@@ -1,7 +1,7 @@
----
++++
 title = "Shahid's Blog. Week 8"
 date = "2018-10-19"
----
++++
 
 ## Shahid's Blog. Week 8
 #### What's new this week?
