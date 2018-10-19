@@ -1,3 +1,4 @@
++++ title = "Shahid's Blog. Week 8." description = "SSH Setup" tags = [ "Blog", "beats", "Shahid", "CIT 480", ] date = "2018-10-18" categories = [ "Blog", ] menu = "main" +++
 ## Shahid's Blog. Week 8
 #### What's new this week?
 
