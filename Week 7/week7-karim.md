@@ -1,8 +1,8 @@
-+++ title = "Shahid's Blog. Week 7" date = "2018-10-12" +++
++++ title = "Shahid's Blog. Week 7" date = "2018-10-14" +++
 ## Shahid's Blog. Week 7
 #### What's new this week?
 
-##### Setting up Docker
+#### Setting up Docker
 1. Update the package list
   ```
   sudo apt-get update
@@ -55,66 +55,6 @@
 
 10. Reboot the system or log out to apply the change from step 9.
 
-11. To create a docker image
-  ```
-  docker build -f image-name -t tagid [path/from/root/to/image]
-
-  docker build /path/to/Dockerfile -t image-name
-  docker build - < /path/to/Dockerfile -t image-name
-  ```
-
-  example:
-
-  ```
-  docker build -t docker-test -t 1.0 ~/Desktop/docker-test
-
-  docker build --rm=true -t production-site .
-  ```
-
-12. Exporting the created docker image
-  ```
-  docker save [imagename] > [path/to/save/to]/imagename.tar
-  ```
-
-  example:
-
-  ```
-  docker save docker-test > ~/Desktop/docker-test/docker-test.tar
-  ```
-
-13. Remove a docker image by using the command
-  ```
-  docker rmi [imageid]
-  ```
-
-  As long as a couple unique characters from the image id is used, the
-  command will find the entire id and remove it for you.
-
-14. Running a shell in a docker image
-  ```
-  docker run -it [image-name]:[version]
-  ```
-
-  example:
-  ```
-  docker run -it ubuntu:14.04.5
-  ```
-
-15. Stopping all docker containers
-  ```
-  docker stop $(docker ps -aq)
-  ```
-
-16. Removing all docker containers
-  ```
-  docker rm $(docker ps -aq)
-  ```
-
-17 Removing all docker images
-  ```
-  docker rmi $(docker images -q)
-  ```
-  
 ##### Creating a Dockerfile
 1. First start by creating a new directory for the Dockerfile.
 
@@ -150,3 +90,64 @@
   ```
 3. The very bottom result will give you the ip address to put into your internet browser to test
   the apache2 website.
+
+#### Managing images and containers
+1. To create a docker image
+  ```
+  docker build -f image-name -t tagid [path/from/root/to/image]
+
+  docker build /path/to/Dockerfile -t image-name
+  docker build - < /path/to/Dockerfile -t image-name
+  ```
+
+  example:
+
+  ```
+  docker build -t docker-test -t 1.0 ~/Desktop/docker-test
+
+  docker build --rm=true -t production-site .
+  ```
+
+2. Exporting the created docker image
+  ```
+  docker save [imagename] > [path/to/save/to]/imagename.tar
+  ```
+
+  example:
+
+  ```
+  docker save docker-test > ~/Desktop/docker-test/docker-test.tar
+  ```
+
+3. Remove a docker image by using the command
+  ```
+  docker rmi [imageid]
+  ```
+
+  As long as a couple unique characters from the image id is used, the
+  command will find the entire id and remove it for you.
+
+4. Running a shell in a docker image
+  ```
+  docker run -it [image-name]:[version]
+  ```
+
+  example:
+  ```
+  docker run -it ubuntu:14.04.5
+  ```
+
+5. Stopping all docker containers
+  ```
+  docker stop $(docker ps -aq)
+  ```
+
+6. Removing all docker containers
+  ```
+  docker rm $(docker ps -aq)
+  ```
+
+7. Removing all docker images
+  ```
+  docker rmi $(docker images -q)
+  ```
