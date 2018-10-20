@@ -1,4 +1,15 @@
-+++ title = "Tyler's Blog. Week 8." description = "Finishing Lambda" tags = [ "Blog", "beats", "Tyler", "CIT 480", ] date = "2018-10-18" categories = [ "Blog", ] menu = "main" +++
++++ 
+title = "Tyler's Blog. Week 8." 
+description = "Finishing Lambda" 
+tags = [ 
+    "Blog", "beats", "Tyler", "CIT 480",
+] 
+date = "2018-10-18" 
+categories = [ 
+    "Blog",
+] 
+menu = "main" 
++++
 
 ## Tyler's Blog. Week 8.
 #### What's new this week?
