@@ -76,7 +76,7 @@ tag {
 }
 }
 ```
-### ECS Tasks
+#### ECS - Tasks
 We are now going to declare tasks that our containers in the cluster can use. Create a new file called `ECS-tasks.tf`.
 
 ```
@@ -147,7 +147,7 @@ Create a new folder called `task-definitions` inside your project folder and the
 ]
 ```
 
-##### ECS Services
+##### ECS - Services
 We now need Services so that we can use our tasks in the cluster.
 ```
 # ECS Services
@@ -190,7 +190,7 @@ resource "aws_ecs_service" "beats-production" {
 
 ```
 
-##### ECS ALB
+##### ECS - ALB
 We can still use our old load balancer found in `Services.tf` but we need to do some adjustments.
 
 ```
