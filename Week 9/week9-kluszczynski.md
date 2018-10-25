@@ -11,7 +11,6 @@ categories = [
 menu = "main" 
 +++
 
-## Tyler's Blog. Week 8.
 #### What's new this week?
 
 #### Project 4
