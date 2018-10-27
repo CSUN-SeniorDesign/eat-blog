@@ -1,5 +1,5 @@
 +++
-title = "Erik's Blog. Week 8."
+title = "Erik's Blog. Week 9."
 description = "AWS Pricing Calculator"
 tags = [
     "Blog",
