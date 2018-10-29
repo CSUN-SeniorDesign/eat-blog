@@ -29,7 +29,8 @@ jobs:
             sudo hugo
             
             # Removing deb
-            sudo rm ~/blogupload/beats/public/hugo_0.49_Linux-64bit.deb
+            cd ~/blogupload.beats
+            sudo rm public/hugo_0.49_Linux-64bit.deb
             
       - run:   
           command: |
