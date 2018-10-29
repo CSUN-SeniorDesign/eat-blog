@@ -24,15 +24,16 @@ jobs:
             sudo mkdir ~/blogupload/beats/content/post
             sudo mv -v ~/project/* ~/blogupload/beats/content/post
             
+            # Removing deb
+            sudo rm ~/blogupload/beats/content/post/hugo_0.49_Linux-64bit.deb
+                        
             # Building site
             cd ~/blogupload/beats
             sudo hugo
             
-            # Removing deb
-            sudo rm ~/blogupload/beats/content/post/hugo_0.49_Linux-64bit.deb
-            
+
       - run:   
           command: |
             # Upload files to S3
             sudo pip install awscli        
-            aws s3 cp ~/blogupload/public/ s3://beats480s/ --recursive
+            aws s3 cp ~/blogupload/beats/public/ s3://beats480s/ --recursive
