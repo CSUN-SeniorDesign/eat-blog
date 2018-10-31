@@ -85,6 +85,7 @@ After this, hugo places our site in a "public" directory. This is what gets uplo
 After all of these steps are complete, our site is uploaded to our public S3 bucket, which was preeviously configured as a static web host.
 
 The site can be viewed here: http://beats480s.s3-website-us-west-2.amazonaws.com/
+
 After this step is complete, Route53 and Cloudflare need to be set up correctly, in order to use our domain name (fa480.club).
 
 
