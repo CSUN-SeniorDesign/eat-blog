@@ -20,7 +20,6 @@ Project 5 involves deploying our plan from last week to AWS services. Our plan i
 CircleCI gets ran everytime there is a push to the master branch. This is setup in the .circleci/config.yml file with the following:
 
 ```
-
 version: 2
 jobs:
   build:
@@ -38,7 +37,6 @@ We are using CircleCI's Ubuntu machine, instead of a container image:
 After this, we get into the deployment steps. Frst, we make a new driectory, then install the necessary software to build our blog.
 
 ```
-
             # Making blog upload directory
             sudo mkdir ~/blogupload
             
