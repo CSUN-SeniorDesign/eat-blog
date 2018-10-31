@@ -1,39 +1,42 @@
 version: 2
 jobs:
-  build: 
+  build:
+    branches:
+      only:
+        - master
     machine: true
     steps:
       - checkout
       - run:   
           command: |
-            # Setting up docker here.
-            cd fa480.club-dockerfile/
+            # Making blog upload directory
+            sudo mkdir ~/blogupload
             
-            # Build 1
-            docker build --rm=true -t fa480.club-base .
-            cd ..
-            cd production-site-dockerfile/
+            # Getting required packages.
+            sudo wget https://github.com/gohugoio/hugo/releases/download/v0.49/hugo_0.49_Linux-64bit.deb
+            sudo apt-get install dpkg
             
-            # Build 2
-            docker build --rm=true -t finalbuild .
+            # Installing hugo
+            sudo dpkg -i hugo_0.49_Linux-64bit.deb
             
-            # Tagging
-            docker tag finalbuild:latest 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo:$CIRCLE_SHA1
-            cd ..
+            # Setting up site
+            cd ~/blogupload
+            sudo hugo new site beats
+            sudo mv -v ~/project/arabica ~/blogupload/beats/themes
+            sudo mv ~/project/config.toml ~/blogupload/beats/config.toml
+            sudo mkdir ~/blogupload/beats/content/post
+            sudo mv -v ~/project/* ~/blogupload/beats/content/post
+            
+            # Removing deb
+            sudo rm ~/blogupload/beats/content/post/hugo_0.49_Linux-64bit.deb
+                        
+            # Building site
+            cd ~/blogupload/beats
+            sudo hugo
+            
+
       - run:   
           command: |
-            # This uploads the ProductionSite.txt to s3.
+            # Upload files to S3
             sudo pip install awscli        
-            aws s3 cp /home/circleci/project/ProductionSite.txt s3://csuneat-project-2/
-            sudo rm /home/circleci/project/ProductionSite.txt
-      - run:   
-          command: |
-            # Adding Staging Site to s3.
-            touch StagingSite.txt
-            echo $CIRCLE_SHA1 > StagingSite.txt
-            aws s3 cp StagingSite.txt s3://csuneat-project-2
-      - run:
-         command: |
-           # Upload image to ECR here.
-           sudo $(aws ecr get-login --no-include-email --region us-west-2) 
-           sudo docker push 507963158957.dkr.ecr.us-west-2.amazonaws.com/beats_repo 
+            aws s3 cp ~/blogupload/beats/public/ s3://beats480s/ --recursive
