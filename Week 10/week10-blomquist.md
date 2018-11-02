@@ -8,7 +8,7 @@ tags = [
     "COMP 480",
     "Project 5",
 ]
-date = "2018-10-26"
+date = "2018-11-02"
 categories = [
     "Blog",
 ]
