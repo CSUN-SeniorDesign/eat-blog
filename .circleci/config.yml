@@ -39,4 +39,4 @@ jobs:
           command: |
             # Upload files to S3
             sudo pip install awscli        
-            aws s3 cp ~/blogupload/beats/public/ s3://beats480s/ --recursive
+            aws s3 cp ~/blogupload/beats/public/ s3://fa480.club/ --recursive
